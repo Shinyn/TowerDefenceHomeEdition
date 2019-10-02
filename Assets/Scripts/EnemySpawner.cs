@@ -5,11 +5,12 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
-    int speed = 150;
-    int delay = 1;
+    public int speed = 150;
+    public float delay = 1.0f;
 
-    public List<GameObject> enemyPool = new List<GameObject>();
-    public int enemyPoolSize = 20;
+    public List<Rigidbody2D> enemyPool = new List<Rigidbody2D>();
+    int enemyPoolSize = 500;
+    bool expandableEnemyPool = true;
 
     private void Start()
     {
@@ -20,19 +21,46 @@ public class EnemySpawner : MonoBehaviour
     {
         for (int i = 0; i < enemyPoolSize; i++)
         {
+            GameObject enemy = Instantiate(enemyPrefab);
+            enemy.SetActive(false);
 
+            Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
+            enemyPool.Add(rb);
         }
+    }
+
+    Rigidbody2D GetEnemy()
+    {
+        foreach(Rigidbody2D enemy in enemyPool)
+        {
+            if (!enemy.gameObject.activeInHierarchy)
+            {
+                enemy.gameObject.SetActive(true);
+                return enemy;
+            }
+        }
+
+        if (expandableEnemyPool)
+        {
+            GameObject enemy = Instantiate(enemyPrefab);
+            Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
+            enemyPool.Add(rb);
+            enemy.SetActive(true);
+            return rb;
+        }
+        return null;
     }
 
     IEnumerator SpawnEnemy()
     {
         while (true)
         {
-            GameObject enemy = Instantiate(enemyPrefab);
-            enemy.transform.position = transform.position;
-            Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
-            rb.AddForce(Vector2.left * speed);
-
+            Rigidbody2D rb = GetEnemy();
+            if (rb != null)
+            {
+                rb.transform.position = transform.position;
+                //rb.AddForce(Vector2.left * speed);
+            }
             yield return new WaitForSeconds(delay);
         }
        

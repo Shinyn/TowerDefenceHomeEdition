@@ -22,7 +22,6 @@ public class TowerBaseController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("click");
         if (showingTowers == true)
             DisableTowerChoice();
 
