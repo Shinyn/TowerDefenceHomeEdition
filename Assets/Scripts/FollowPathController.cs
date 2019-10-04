@@ -7,7 +7,7 @@ public class FollowPathController : StateMachineBehaviour
     public GameObject pathPointsPrefab;
     Transform pathPoints;
     int nextPathPoint;
-    float moveSpeed = 10f;
+    float moveSpeed = 5f;
 
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state

@@ -5,28 +5,25 @@ using UnityEngine;
 public class TowerBaseController : MonoBehaviour
 {
     private bool showingTowers;
-    public List<Transform> towerPlacements;
+    SpriteRenderer baseColor;
+    bool towerChosen = false;
     
     void Start()
     {
-
         DisableTowerChoice();
-        //SpawnTowerBases();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        baseColor = gameObject.GetComponent<SpriteRenderer>();
     }
 
     private void OnMouseDown()
     {
-        if (showingTowers == true)
-            DisableTowerChoice();
+        if (towerChosen == false)
+        {
+            if (showingTowers == true)
+                DisableTowerChoice();
 
-        else
-            EnableTowerChoice();
+            else
+                EnableTowerChoice();
+        }
     }
 
     private void DisableTowerChoice()
@@ -47,12 +44,23 @@ public class TowerBaseController : MonoBehaviour
         showingTowers = true;
     }
 
-
-    private void SpawnTowerBases()
+    public void ChangeColorToTowerSelected(GameObject selectedTower)
     {
-        towerPlacements.Add(gameObject.transform);
+        baseColor.color = selectedTower.GetComponent<SpriteRenderer>().color;
+        towerChosen = true;
+        DisableTowerChoice();
     }
-    // onStart disable alla tornval
-    // onTouch enable alla tornval
-    // när ett torn valts byt sprite till rätt torn, disable towerBaseController för det tornet
+
+    public void DetectEnemies()
+    {
+        // Behöver en spherecast
+        //RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.)
+    }
+
+    // Skicka med vilket torn - ta färgen?
+    // Olika detect range
+    // Olika dmg
+    // Olika kostnad
+    // 
+
 }
