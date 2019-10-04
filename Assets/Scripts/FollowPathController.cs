@@ -31,9 +31,9 @@ public class FollowPathController : StateMachineBehaviour
         }
         else
         {
+            if (nextPathPoint < 15)
             nextPathPoint++;
-        }
-        
+        }        
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

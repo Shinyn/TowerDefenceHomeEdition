@@ -9,15 +9,21 @@ public class EnemySpawner : MonoBehaviour
     public float delay = 1.0f;
 
     public List<Rigidbody2D> enemyPool = new List<Rigidbody2D>();
-    int enemyPoolSize = 500;
+    int enemyPoolSize = 50;
     bool expandableEnemyPool = true;
 
     private void Start()
     {
+        AddEnemiesToPool();
         StartCoroutine(SpawnEnemy());
     }
 
-    private void SpawnExtraEnemies()
+    private void Update()
+    {
+        
+    }
+
+    private void AddEnemiesToPool()
     {
         for (int i = 0; i < enemyPoolSize; i++)
         {
@@ -39,7 +45,7 @@ public class EnemySpawner : MonoBehaviour
                 return enemy;
             }
         }
-
+        /*
         if (expandableEnemyPool)
         {
             GameObject enemy = Instantiate(enemyPrefab);
@@ -47,7 +53,7 @@ public class EnemySpawner : MonoBehaviour
             enemyPool.Add(rb);
             enemy.SetActive(true);
             return rb;
-        }
+        } */
         return null;
     }
 
@@ -59,13 +65,9 @@ public class EnemySpawner : MonoBehaviour
             if (rb != null)
             {
                 rb.transform.position = transform.position;
-                //rb.AddForce(Vector2.left * speed);
             }
             yield return new WaitForSeconds(delay);
         }
        
     }
-
-
-
 }

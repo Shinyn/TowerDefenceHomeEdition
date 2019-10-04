@@ -11,7 +11,6 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         currentPosition = transform.position;
-        //targetPosition = goalPost.GetChild()
     }
 
     private void Update()
