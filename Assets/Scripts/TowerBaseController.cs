@@ -8,10 +8,11 @@ public class TowerBaseController : MonoBehaviour
     SpriteRenderer baseColor;
     bool towerChosen = false;
     public GameObject bulletPrefab;
-    float bulletDelay = 1.0f;
+    bool detectedEnemy = false;
 
     void Start()
     {
+        
         DisableTowerChoice();
         baseColor = gameObject.GetComponent<SpriteRenderer>();
     }
@@ -31,8 +32,11 @@ public class TowerBaseController : MonoBehaviour
     private void Update()
     {
         DetectEnemies();
-        // if (enemy detected) {shoot at enemy}
-      
+        if (detectedEnemy == true)
+        {
+            StartCoroutine(ShootBullet());
+        }
+
     }
 
     private void DisableTowerChoice()
@@ -66,7 +70,13 @@ public class TowerBaseController : MonoBehaviour
         Collider2D hit = Physics2D.OverlapCircle(transform.position, detectRadius);
         if (hit != null && hit.tag == "Enemy")
         {
-            StartCoroutine(ShootBullet());
+            detectedEnemy = true;
+            //Debug.Log("detected enemy");
+        }
+        else
+        {
+            detectedEnemy = false;
+            //Debug.Log("nothing");
         }
         // Behöver en spherecast
         //RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.)
@@ -74,12 +84,14 @@ public class TowerBaseController : MonoBehaviour
 
     public IEnumerator ShootBullet()
     {
-        GameObject bullet =  Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        //Debug.Log("shootBullet");
+        float shootDelay = 2.0f;
+        yield return new WaitForSeconds(shootDelay);
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         BulletController bulletController = bullet.GetComponent<BulletController>();
-
         bulletController.Shoot();
+        
 
-        yield return new WaitForSeconds(bulletDelay);
     }
     // Skicka med vilket torn - ta färgen?
     // Olika detect range
