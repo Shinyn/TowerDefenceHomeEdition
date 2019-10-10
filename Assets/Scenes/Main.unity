@@ -355,93 +355,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 1013629177156225270, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1013629176635014270, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1013629177671468418, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
-        type: 3}
-      propertyPath: towerPlacements.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1013629177671468418, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
-        type: 3}
-      propertyPath: towerPlacements.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1013629177671468418, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
-        type: 3}
-      propertyPath: towerPlacements.Array.data[2]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1013629177671468418, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
-        type: 3}
-      propertyPath: towerPlacements.Array.data[3]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1013629177671468418, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
-        type: 3}
-      propertyPath: towerPlacements.Array.data[4]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1013629177671468418, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
-        type: 3}
-      propertyPath: towerPlacements.Array.data[5]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1013629177671468418, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
-        type: 3}
-      propertyPath: towerPlacements.Array.data[6]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1013629177671468418, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
-        type: 3}
-      propertyPath: towerPlacements.Array.data[7]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1013629177671468418, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
-        type: 3}
-      propertyPath: towerPlacements.Array.data[8]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1013629177671468418, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
-        type: 3}
-      propertyPath: towerPlacements.Array.data[9]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1013629177671468418, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
-        type: 3}
-      propertyPath: detectRadius
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1013629177671468418, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
-        type: 3}
-      propertyPath: bulletPrefab
-      value: 
-      objectReference: {fileID: 3978690907051908787, guid: 673542322199142439994f105129ee46,
-        type: 3}
-    - target: {fileID: 1013629177671468418, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
-        type: 3}
-      propertyPath: bulletController
-      value: 
-      objectReference: {fileID: 2691749107524000351, guid: 673542322199142439994f105129ee46,
-        type: 3}
-    - target: {fileID: 1013629177988604406, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1013629177640115848, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 1013629177671468421, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -496,6 +409,93 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013629177671468418, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
+        type: 3}
+      propertyPath: towerPlacements.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013629177671468418, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
+        type: 3}
+      propertyPath: towerPlacements.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013629177671468418, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
+        type: 3}
+      propertyPath: towerPlacements.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013629177671468418, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
+        type: 3}
+      propertyPath: towerPlacements.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013629177671468418, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
+        type: 3}
+      propertyPath: towerPlacements.Array.data[4]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013629177671468418, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
+        type: 3}
+      propertyPath: towerPlacements.Array.data[5]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013629177671468418, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
+        type: 3}
+      propertyPath: towerPlacements.Array.data[6]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013629177671468418, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
+        type: 3}
+      propertyPath: towerPlacements.Array.data[7]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013629177671468418, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
+        type: 3}
+      propertyPath: towerPlacements.Array.data[8]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013629177671468418, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
+        type: 3}
+      propertyPath: towerPlacements.Array.data[9]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013629177671468418, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
+        type: 3}
+      propertyPath: detectRadius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013629177671468418, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
+        type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 3978690907051908787, guid: 673542322199142439994f105129ee46,
+        type: 3}
+    - target: {fileID: 1013629177671468418, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
+        type: 3}
+      propertyPath: bulletController
+      value: 
+      objectReference: {fileID: 2691749107524000351, guid: 673542322199142439994f105129ee46,
+        type: 3}
+    - target: {fileID: 1013629177640115848, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013629177156225270, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013629177988604406, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013629176635014270, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc3fbeb428d3aa143a0d4e95f89c1196, type: 3}

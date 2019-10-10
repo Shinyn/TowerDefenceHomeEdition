@@ -9,6 +9,7 @@ public class TowerBaseController : MonoBehaviour
     bool towerChosen = false;
     public GameObject bulletPrefab;
     bool detectedEnemy = false;
+    public float detectRadius = 1.0f;
 
     void Start()
     {
@@ -39,6 +40,12 @@ public class TowerBaseController : MonoBehaviour
 
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, detectRadius);
+    }
+
     private void DisableTowerChoice()
     {
         transform.GetChild(0).gameObject.SetActive(false);
@@ -64,7 +71,7 @@ public class TowerBaseController : MonoBehaviour
         DisableTowerChoice();
     }
 
-    public float detectRadius = 1.0f;
+    
     public void DetectEnemies()
     {
         Collider2D hit = Physics2D.OverlapCircle(transform.position, detectRadius);
@@ -86,11 +93,11 @@ public class TowerBaseController : MonoBehaviour
     {
         //Debug.Log("shootBullet");
         float shootDelay = 2.0f;
-        yield return new WaitForSeconds(shootDelay);
+        
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         BulletController bulletController = bullet.GetComponent<BulletController>();
         bulletController.Shoot();
-        
+        yield return new WaitForSeconds(shootDelay);
 
     }
     // Skicka med vilket torn - ta färgen?
