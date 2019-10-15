@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
-    //public int speed = 150;
     public float delay = 1.0f;
 
     public List<Rigidbody2D> enemyPool = new List<Rigidbody2D>();
@@ -29,6 +28,7 @@ public class EnemySpawner : MonoBehaviour
         {
             GameObject enemy = Instantiate(enemyPrefab);
             enemy.SetActive(false);
+            //enemy.AddComponent<GameManager>(); Behövs inte längre
 
             Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
             enemyPool.Add(rb);

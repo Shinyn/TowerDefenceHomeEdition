@@ -419,7 +419,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 023f17a88651b894aa2ed9ca4b927cff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerPlacements: []
+  target: {fileID: 931875745280395877, guid: c3def3e7d56958b4cabd92d42aa4a5f5, type: 3}
+  bulletPrefab: {fileID: 3978690907051908787, guid: 673542322199142439994f105129ee46,
+    type: 3}
+  detectRadius: 1
 --- !u!61 &1013629177671468419
 BoxCollider2D:
   m_ObjectHideFlags: 0

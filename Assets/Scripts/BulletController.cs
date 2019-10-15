@@ -5,8 +5,6 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     Rigidbody2D rigidbody;
-    // pool
-    // hastighet
     private void Awake()
     {
         rigidbody = gameObject.GetComponent<Rigidbody2D>();

@@ -4,18 +4,52 @@ using UnityEngine;
 
 public class TowerBaseController : MonoBehaviour
 {
+    public Transform target;
+
     private bool showingTowers;
     SpriteRenderer baseColor;
     bool towerChosen = false;
     public GameObject bulletPrefab;
     bool detectedEnemy = false;
     public float detectRadius = 1.0f;
+    float fireDelay = 0.5f;
+    float lastTimeFired;
+    private string enemiesTag = "Enemy";
 
     void Start()
     {
-        
+        InvokeRepeating("Test", 0, 1);
+        lastTimeFired = Time.time;
         DisableTowerChoice();
         baseColor = gameObject.GetComponent<SpriteRenderer>();
+    }
+
+    void Test()
+    {
+        //Debug.Log("time test");
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemiesTag);
+        float shortestDistance = Mathf.Infinity;
+        GameObject nearestEnemy = null;
+
+        foreach (GameObject enemy in enemies)
+        {
+            float distanceToEnemy = Vector2.Distance(transform.position, enemy.transform.position);
+            if (distanceToEnemy < shortestDistance)
+            {
+                shortestDistance = distanceToEnemy;
+                nearestEnemy = enemy;
+            }
+            else
+            {
+                target = null;
+            }
+        }
+
+        if (nearestEnemy != null && shortestDistance <= detectRadius)
+        {
+            target = nearestEnemy.transform;
+        }
+
     }
 
     private void OnMouseDown()
@@ -32,10 +66,14 @@ public class TowerBaseController : MonoBehaviour
 
     private void Update()
     {
+        if (target == null)
+            return;
+
         DetectEnemies();
-        if (detectedEnemy == true)
+        if (detectedEnemy == true && Time.time > lastTimeFired + fireDelay)
         {
-            StartCoroutine(ShootBullet());
+            ShootBullet();
+            lastTimeFired = Time.time;
         }
 
     }
@@ -78,27 +116,18 @@ public class TowerBaseController : MonoBehaviour
         if (hit != null && hit.tag == "Enemy")
         {
             detectedEnemy = true;
-            //Debug.Log("detected enemy");
         }
         else
         {
             detectedEnemy = false;
-            //Debug.Log("nothing");
         }
-        // Behöver en spherecast
-        //RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.)
     }
 
-    public IEnumerator ShootBullet()
-    {
-        //Debug.Log("shootBullet");
-        float shootDelay = 2.0f;
-        
+    public void ShootBullet()
+    {        
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         BulletController bulletController = bullet.GetComponent<BulletController>();
         bulletController.Shoot();
-        yield return new WaitForSeconds(shootDelay);
-
     }
     // Skicka med vilket torn - ta färgen?
     // Olika detect range

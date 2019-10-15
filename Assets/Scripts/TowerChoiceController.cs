@@ -13,8 +13,6 @@ public class TowerChoiceController : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        //string towerColor = spriteRenderer.color.ToString();
-        //Debug.Log(towerColor);
         BuildTower();
     }
 
