@@ -7,13 +7,14 @@ public class EnemyController : MonoBehaviour
     public GameObject goalPost;
     FollowPathController pathController;
 
-    int hp;
+    int hp = 10;
     int lifeCost = 1;
-    int goldValue;
+    int goldValue = 5;
     bool madeItToExit = false;
     SpriteRenderer sprite;
-    float timeCheck;
-    float lastTimeCheck = 1.5f;
+    float time;
+    float timeCheckDelay = 0.1f;
+    bool dead = false;
 
     public delegate void EnemyEscaped(int lifeLost);
     public static event EnemyEscaped enemyEscaped;
@@ -23,28 +24,40 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
-        timeCheck = Time.time;
+        time = Time.time;
         sprite = gameObject.GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
-        if (madeItToExit == true && Time.time > timeCheck + lastTimeCheck)
+        if (madeItToExit == true && Time.time > time + timeCheckDelay)
         {
-            if (enemyEscaped != null)
-              enemyEscaped(lifeCost);
-
+            enemyEscaped?.Invoke(lifeCost);
             madeItToExit = false;
-            timeCheck = Time.time;
+            time = Time.time;
         }
+
+        if (dead == true && Time.time > time + timeCheckDelay)
+        {
+            enemyKilled?.Invoke(goldValue);
+            dead = false;
+            time = Time.time;
+        }
+    }
+
+    public void TookDamage()
+    {
+        // if bullet hit - take dmg
+        // if (dmgTaken > hp) {dead = true;}
+
     }
 
     private void OnBecameInvisible()
     {
         gameObject.SetActive(false);
         madeItToExit = true;
+        dead = true;
     }
-
 
     // behöver metod för att välja fiender och kanske slumpa fram vilken som ska spawnas
 

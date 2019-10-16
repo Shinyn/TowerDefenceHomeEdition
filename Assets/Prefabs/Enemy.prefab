@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 931875745280395877}
   - component: {fileID: 931875745280395878}
   - component: {fileID: -1224394752291428409}
-  - component: {fileID: 7917398229183580116}
   - component: {fileID: 6862469222928095313}
   - component: {fileID: 2367069412795800650}
+  - component: {fileID: 2463856758473036108}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
@@ -98,27 +98,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goalPost: {fileID: 1895005401928696685, guid: 8e997cd8fb46b41429b1bd886d05c1d7,
     type: 3}
---- !u!50 &7917398229183580116
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 931875745280395879}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!95 &6862469222928095313
 Animator:
   serializedVersion: 3
@@ -164,3 +143,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.04, y: 0.04}
   m_EdgeRadius: 0
+--- !u!50 &2463856758473036108
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931875745280395879}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

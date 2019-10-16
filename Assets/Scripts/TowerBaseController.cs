@@ -5,6 +5,8 @@ using UnityEngine;
 public class TowerBaseController : MonoBehaviour
 {
     public Transform target;
+    float fireRate = 1f;
+    float fireCountdown = 0f;
 
     private bool showingTowers;
     SpriteRenderer baseColor;
@@ -69,6 +71,15 @@ public class TowerBaseController : MonoBehaviour
         if (target == null)
             return;
 
+        if (fireCountdown <= 0)
+        {
+            ShootBullet();
+            fireCountdown = 1f / fireRate;
+        }
+
+        fireCountdown -= Time.deltaTime;
+
+
         DetectEnemies();
         if (detectedEnemy == true && Time.time > lastTimeFired + fireDelay)
         {
@@ -127,12 +138,9 @@ public class TowerBaseController : MonoBehaviour
     {        
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         BulletController bulletController = bullet.GetComponent<BulletController>();
-        bulletController.Shoot();
+        if (bulletController != null)
+        bulletController.TrackTarget(target);
     }
     // Skicka med vilket torn - ta färgen?
-    // Olika detect range
-    // Olika dmg
-    // Olika kostnad
-    // 
 
 }
