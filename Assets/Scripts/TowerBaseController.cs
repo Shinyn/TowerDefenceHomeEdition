@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class TowerBaseController : MonoBehaviour
 {
-    public Transform target;
+    Transform target;
     float fireRate = 1f;
     float fireCountdown = 0f;
+    float repeatRate = 0.25f;
 
     private bool showingTowers;
     SpriteRenderer baseColor;
@@ -20,15 +21,14 @@ public class TowerBaseController : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("Test", 0, 1);
+        InvokeRepeating("UpdateTarget", 0, repeatRate);
         lastTimeFired = Time.time;
         DisableTowerChoice();
         baseColor = gameObject.GetComponent<SpriteRenderer>();
     }
 
-    void Test()
+    void UpdateTarget()
     {
-        //Debug.Log("time test");
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemiesTag);
         float shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
@@ -79,13 +79,13 @@ public class TowerBaseController : MonoBehaviour
 
         fireCountdown -= Time.deltaTime;
 
-
+        /*
         DetectEnemies();
         if (detectedEnemy == true && Time.time > lastTimeFired + fireDelay)
         {
             ShootBullet();
             lastTimeFired = Time.time;
-        }
+        } */
 
     }
 
@@ -115,7 +115,7 @@ public class TowerBaseController : MonoBehaviour
 
     public void ChangeColorToTowerSelected(GameObject selectedTower)
     {
-        baseColor.color = selectedTower.GetComponent<SpriteRenderer>().color;
+        baseColor.color = selectedTower.GetComponent<SpriteRenderer>().color; //tag
         towerChosen = true;
         DisableTowerChoice();
     }
@@ -135,11 +135,14 @@ public class TowerBaseController : MonoBehaviour
     }
 
     public void ShootBullet()
-    {        
+    {
+        //Debug.Log("Shoot");
+        
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         BulletController bulletController = bullet.GetComponent<BulletController>();
         if (bulletController != null)
         bulletController.TrackTarget(target);
+        
     }
     // Skicka med vilket torn - ta färgen?
 

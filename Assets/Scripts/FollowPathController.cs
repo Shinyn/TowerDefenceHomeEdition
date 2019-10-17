@@ -31,7 +31,7 @@ public class FollowPathController : StateMachineBehaviour
         }
         else
         {
-            if (nextPathPoint < 15)
+            if (nextPathPoint < 14)
             nextPathPoint++;
         }        
     }

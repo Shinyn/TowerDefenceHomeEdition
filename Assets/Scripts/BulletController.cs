@@ -5,10 +5,11 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     private Transform target;
-    float velocity = 100f;
-    private void Awake()
+    float velocity = 30f;
+
+    public void TrackTarget(Transform theTarget)
     {
-        
+        target = theTarget;
     }
 
     private void Update()
@@ -27,20 +28,11 @@ public class BulletController : MonoBehaviour
             Impact();
             return;
         }
-
         transform.Translate(direction.normalized * distanceThisFrame, Space.World);
-
     }
 
     public void Impact()
     {
-        Debug.Log("We made impact with target!");
         Destroy(gameObject);
-    }
-
-
-    public void TrackTarget(Transform theTarget)
-    {
-        theTarget = target;
     }
 }
