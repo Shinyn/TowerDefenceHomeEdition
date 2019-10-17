@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    public GameObject enemyPrefab1;
+    public GameObject enemyPrefab2;
+    public GameObject enemyPrefab3;
+    public GameObject enemyPrefab4;
+    public GameObject enemyPrefab5;
     public float delay = 1.0f;
 
     public List<Rigidbody2D> enemyPool = new List<Rigidbody2D>();
@@ -26,9 +30,8 @@ public class EnemySpawner : MonoBehaviour
     {
         for (int i = 0; i < enemyPoolSize; i++)
         {
-            GameObject enemy = Instantiate(enemyPrefab);
+            GameObject enemy = Instantiate(enemyPrefab1);
             enemy.SetActive(false);
-            //enemy.AddComponent<GameManager>(); Behövs inte längre
 
             Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
             enemyPool.Add(rb);

@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class PathController : MonoBehaviour
 {
+    [Header("Attributes")]
+    public float moveSpeed = 5f;
+
+    [Header("Other")]
     public GameObject pathPointsPrefab;
     Transform pathPoints;
     int nextPathPoint;
-    public float moveSpeed = 5f;
+    
 
     // Start is called before the first frame update
     void Start()

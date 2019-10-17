@@ -9,13 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 931875745280395877}
-  - component: {fileID: -1224394752291428409}
   - component: {fileID: 931875745280395878}
+  - component: {fileID: -1224394752291428409}
   - component: {fileID: 5811692885487116488}
   - component: {fileID: 2367069412795800650}
   - component: {fileID: 2463856758473036108}
   m_Layer: 9
-  m_Name: Enemy
+  m_Name: Enemy 2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,26 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-1224394752291428409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 931875745280395879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b2b094f99e07e048904a61a5317d643, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: Goblin
-  hp: 10
-  lifeCost: 1
-  goldValue: 5
-  goalPost: {fileID: 1895005401928696685, guid: 8e997cd8fb46b41429b1bd886d05c1d7,
-    type: 3}
-  madeItToExit: 0
-  startHp: 0
 --- !u!212 &931875745280395878
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -94,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 07ced036185da7e40863ef3743b2fcde, type: 3}
-  m_Color: {r: 0.6037736, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.754717, g: 0.11035956, b: 0.71246624, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -104,6 +84,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-1224394752291428409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931875745280395879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b2b094f99e07e048904a61a5317d643, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Gnome
+  hp: 25
+  lifeCost: 1
+  goldValue: 15
+  goalPost: {fileID: 1895005401928696685, guid: 8e997cd8fb46b41429b1bd886d05c1d7,
+    type: 3}
+  madeItToExit: 0
+  startHp: 0
 --- !u!114 &5811692885487116488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ea562579487884589ca76b198cb583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 3.5
   pathPointsPrefab: {fileID: 1895005401928696685, guid: 8e997cd8fb46b41429b1bd886d05c1d7,
     type: 3}
 --- !u!61 &2367069412795800650

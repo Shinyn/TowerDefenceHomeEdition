@@ -224,7 +224,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: -0.0000027972605, z: 15.704642, w: 1.4784495}
+  m_margin: {x: 0, y: -0.0000027972605, z: 11.844633, w: 1.4784495}
   m_textInfo:
     textComponent: {fileID: 50171925}
     characterCount: 2
@@ -796,8 +796,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27834a0b9d0bc2d4ab20a0a38b908e75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 931875745280395879, guid: c3def3e7d56958b4cabd92d42aa4a5f5,
-    type: 3}
+  enemyPrefab1: {fileID: 0}
+  enemyPrefab2: {fileID: 0}
+  enemyPrefab3: {fileID: 0}
+  enemyPrefab4: {fileID: 0}
+  enemyPrefab5: {fileID: 0}
   delay: 1.5
   enemyPool: []
 --- !u!1 &1978969581 stripped

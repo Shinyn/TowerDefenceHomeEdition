@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [Header("Attributes")]
+    public string name;
     public int hp;
     public int lifeCost;
     public int goldValue;

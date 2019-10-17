@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 931875745280395877}
-  - component: {fileID: 931875745280395878}
   - component: {fileID: -1224394752291428409}
-  - component: {fileID: 6862469222928095313}
+  - component: {fileID: 931875745280395878}
+  - component: {fileID: 5811692885487116488}
   - component: {fileID: 2367069412795800650}
   - component: {fileID: 2463856758473036108}
   m_Layer: 9
@@ -35,6 +35,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-1224394752291428409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931875745280395879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b2b094f99e07e048904a61a5317d643, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Ogre
+  hp: 100
+  lifeCost: 3
+  goldValue: 50
+  goalPost: {fileID: 1895005401928696685, guid: 8e997cd8fb46b41429b1bd886d05c1d7,
+    type: 3}
+  madeItToExit: 0
+  startHp: 0
 --- !u!212 &931875745280395878
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -74,7 +94,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 07ced036185da7e40863ef3743b2fcde, type: 3}
-  m_Color: {r: 0, g: 0.6039216, b: 0.11259039, a: 1}
+  m_Color: {r: 0, g: 0.6039216, b: 0.11204554, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -84,7 +104,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-1224394752291428409
+--- !u!114 &5811692885487116488
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,33 +113,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 931875745280395879}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b2b094f99e07e048904a61a5317d643, type: 3}
+  m_Script: {fileID: 11500000, guid: 41ea562579487884589ca76b198cb583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
-  lifeCost: 3
-  goldValue: 50
-  goalPost: {fileID: 1895005401928696685, guid: 8e997cd8fb46b41429b1bd886d05c1d7,
+  moveSpeed: 2.5
+  pathPointsPrefab: {fileID: 1895005401928696685, guid: 8e997cd8fb46b41429b1bd886d05c1d7,
     type: 3}
---- !u!95 &6862469222928095313
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 931875745280395879}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5a9f008620a2b144db331e9e96bdbea9, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!61 &2367069412795800650
 BoxCollider2D:
   m_ObjectHideFlags: 0
