@@ -23,6 +23,6 @@ public class TowerChoiceController : MonoBehaviour
 
     public void BuildTower()
     {
-        towerBaseController.ChangeColorToTowerSelected(gameObject);
+        towerBaseController.ChangeToTowerSelected(gameObject);
     }
 }

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public GameObject enemyPrefab;
     public GameObject enemyPrefab1;
     public GameObject enemyPrefab2;
     public GameObject enemyPrefab3;
     public GameObject enemyPrefab4;
-    public GameObject enemyPrefab5;
     public float delay = 1.0f;
 
     public List<Rigidbody2D> enemyPool = new List<Rigidbody2D>();

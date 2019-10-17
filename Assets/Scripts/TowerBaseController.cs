@@ -4,20 +4,32 @@ using UnityEngine;
 
 public class TowerBaseController : MonoBehaviour
 {
-    public Transform target;
-    float fireRate = 3f;
+    [Header("Attributes")]
+    [Range(1f, 3f)]
+    public float fireRate = 3f;
+    private float detectRadius = 0f;
+
+    [Header("Other")]
+    public GameObject bulletPrefab;
+    public BulletController bulletController;
     float fireCountdown = 0f;
     float repeatRate = 0.25f;
-
+    Transform target;
     private bool showingTowers;
     SpriteRenderer baseColor;
     bool towerChosen = false;
-    public GameObject bulletPrefab;
     bool detectedEnemy = false;
-    public float detectRadius = 1.0f;
     float fireDelay = 0.1f;
     float lastTimeFired;
     private string enemiesTag = "Enemy";
+
+    enum TowerType
+    {
+        Archer,
+        Mage,
+        Cannon,
+        Ballista
+    };
 
     void Start()
     {
@@ -113,9 +125,33 @@ public class TowerBaseController : MonoBehaviour
         showingTowers = true;
     }
 
-    public void ChangeColorToTowerSelected(GameObject selectedTower)
+    public void ChangeToTowerSelected(GameObject selectedTower)
     {
         baseColor.color = selectedTower.GetComponent<SpriteRenderer>().color; //tag
+        if (selectedTower.tag == "ArcherTower")
+        {
+            bulletController.damage = Random.Range(4, 6);
+            fireRate = 2;
+            detectRadius = 2f;
+        }
+        else if (selectedTower.tag == "MageTower")
+        {
+            bulletController.damage = Random.Range(9, 17);
+            fireRate = 1;
+            detectRadius = 1.5f;
+        }
+        else if (selectedTower.tag == "BallistaTower")
+        {
+            bulletController.damage = Random.Range(6, 13);
+            fireRate = 1;
+            detectRadius = 1.2f;
+        }
+        else if (selectedTower.tag == "CannonTower")
+        {
+            bulletController.damage = Random.Range(8, 15);
+            fireRate = 1;
+            detectRadius = 1.8f;
+        }
         towerChosen = true;
         DisableTowerChoice();
     }

@@ -7,6 +7,10 @@ TagManager:
   - TowerBase
   - TowerChoice
   - Enemy
+  - ArcherTower
+  - MageTower
+  - BallistaTower
+  - CannonTower
   layers:
   - Default
   - TransparentFX

@@ -796,11 +796,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27834a0b9d0bc2d4ab20a0a38b908e75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab1: {fileID: 0}
-  enemyPrefab2: {fileID: 0}
-  enemyPrefab3: {fileID: 0}
-  enemyPrefab4: {fileID: 0}
-  enemyPrefab5: {fileID: 0}
+  enemyPrefab: {fileID: 931875745280395879, guid: c3def3e7d56958b4cabd92d42aa4a5f5,
+    type: 3}
+  enemyPrefab1: {fileID: 931875745280395879, guid: 51358c361b0dfd34a985dfd7d8f4c182,
+    type: 3}
+  enemyPrefab2: {fileID: 931875745280395879, guid: ac0fad2f50ad6c3488be6b51a076d8ca,
+    type: 3}
+  enemyPrefab3: {fileID: 931875745280395879, guid: 2a8f8c4cd464d6b499817a99889c09cc,
+    type: 3}
+  enemyPrefab4: {fileID: 931875745280395879, guid: a906ee199d062684b98fbf1ee0d50705,
+    type: 3}
   delay: 1.5
   enemyPool: []
 --- !u!1 &1978969581 stripped
@@ -849,10 +854,20 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1013629177156225270, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
+        type: 3}
+      propertyPath: m_TagString
+      value: BallistaTower
+      objectReference: {fileID: 0}
     - target: {fileID: 1013629176635014270, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013629176635014270, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
+        type: 3}
+      propertyPath: m_TagString
+      value: CannonTower
       objectReference: {fileID: 0}
     - target: {fileID: 1013629177671468418, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
         type: 3}
@@ -926,15 +941,30 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1013629177671468418, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
+        type: 3}
+      propertyPath: fireRate
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1013629177988604406, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013629177988604406, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
+        type: 3}
+      propertyPath: m_TagString
+      value: MageTower
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013629177640115848, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
         type: 3}
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1013629177640115848, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
         type: 3}
-      propertyPath: m_Layer
-      value: 8
+      propertyPath: m_TagString
+      value: ArcherTower
       objectReference: {fileID: 0}
     - target: {fileID: 1013629177671468421, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
         type: 3}
@@ -995,6 +1025,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013629177640115849, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013629177156225271, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013629177988604407, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013629176635014271, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc3fbeb428d3aa143a0d4e95f89c1196, type: 3}

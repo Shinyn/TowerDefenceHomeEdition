@@ -48,9 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Goblin
-  hp: 10
+  hp: 20
   lifeCost: 1
-  goldValue: 5
+  goldValue: 3
   goalPost: {fileID: 1895005401928696685, guid: 8e997cd8fb46b41429b1bd886d05c1d7,
     type: 3}
   madeItToExit: 0

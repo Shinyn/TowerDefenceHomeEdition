@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 931875745280395877}
-  - component: {fileID: 931875745280395878}
   - component: {fileID: -1224394752291428409}
+  - component: {fileID: 931875745280395878}
   - component: {fileID: 5811692885487116488}
   - component: {fileID: 2367069412795800650}
   - component: {fileID: 2463856758473036108}
@@ -35,6 +35,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-1224394752291428409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931875745280395879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b2b094f99e07e048904a61a5317d643, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Charger
+  hp: 75
+  lifeCost: 2
+  goldValue: 45
+  goalPost: {fileID: 1895005401928696685, guid: 8e997cd8fb46b41429b1bd886d05c1d7,
+    type: 3}
+  madeItToExit: 0
+  startHp: 0
 --- !u!212 &931875745280395878
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -84,26 +104,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-1224394752291428409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 931875745280395879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b2b094f99e07e048904a61a5317d643, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: Charger
-  hp: 75
-  lifeCost: 2
-  goldValue: 45
-  goalPost: {fileID: 1895005401928696685, guid: 8e997cd8fb46b41429b1bd886d05c1d7,
-    type: 3}
-  madeItToExit: 0
-  startHp: 0
 --- !u!114 &5811692885487116488
 MonoBehaviour:
   m_ObjectHideFlags: 0
