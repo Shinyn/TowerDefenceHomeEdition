@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TowerBaseController : MonoBehaviour
 {
-    Transform target;
-    float fireRate = 1f;
+    public Transform target;
+    float fireRate = 3f;
     float fireCountdown = 0f;
     float repeatRate = 0.25f;
 
@@ -15,7 +15,7 @@ public class TowerBaseController : MonoBehaviour
     public GameObject bulletPrefab;
     bool detectedEnemy = false;
     public float detectRadius = 1.0f;
-    float fireDelay = 0.5f;
+    float fireDelay = 0.1f;
     float lastTimeFired;
     private string enemiesTag = "Enemy";
 
@@ -36,7 +36,7 @@ public class TowerBaseController : MonoBehaviour
         foreach (GameObject enemy in enemies)
         {
             float distanceToEnemy = Vector2.Distance(transform.position, enemy.transform.position);
-            if (distanceToEnemy < shortestDistance)
+            if (distanceToEnemy < shortestDistance && distanceToEnemy <= detectRadius)
             {
                 shortestDistance = distanceToEnemy;
                 nearestEnemy = enemy;
@@ -74,7 +74,7 @@ public class TowerBaseController : MonoBehaviour
         if (fireCountdown <= 0)
         {
             ShootBullet();
-            fireCountdown = 1f / fireRate;
+            fireCountdown = 1f / fireRate; // infinite fireRate just nu
         }
 
         fireCountdown -= Time.deltaTime;

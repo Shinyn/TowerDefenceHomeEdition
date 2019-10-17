@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public GameObject goalPost;
-    FollowPathController pathController;
+    [Header("Attributes")]
+    public int hp;
+    public int lifeCost;
+    public int goldValue;
 
-    int hp = 10;
-    int lifeCost = 1;
-    int goldValue = 5;
-    bool madeItToExit = false;
+    [Header("Other")]
+    public GameObject goalPost;
+    public bool madeItToExit = false;
     SpriteRenderer sprite;
     float time;
     float timeCheckDelay = 0.1f;
     bool dead = false;
+    public int startHp;
+    private bool neverUsed = true;
 
     public delegate void EnemyEscaped(int lifeLost);
     public static event EnemyEscaped enemyEscaped;
@@ -24,9 +27,24 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
+        //startHp = hp;
         time = Time.time;
         sprite = gameObject.GetComponent<SpriteRenderer>();
     }
+
+    private void OnEnable()
+    {
+      if (neverUsed)
+            startHp = hp;
+      else
+            hp = startHp;
+    }
+
+    private void OnDisable()
+    {
+        neverUsed = false;
+    }
+
 
     private void Update()
     {
@@ -40,46 +58,33 @@ public class EnemyController : MonoBehaviour
         if (dead == true && Time.time > time + timeCheckDelay)
         {
             enemyKilled?.Invoke(goldValue);
+            gameObject.SetActive(false);
             dead = false;
             time = Time.time;
         }
     }
 
-    public void TookDamage()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
+        //Debug.Log("OUCH!!!");
+    }
+
+    public void LooseHP(int dmgTaken)
+    {
+        hp -= dmgTaken;
+        if (hp <= 0)
+        {
+            dead = true;
+        }
+        //Debug.Log("hp = " + hp);
         // if bullet hit - take dmg
         // if (dmgTaken > hp) {dead = true;}
-
     }
 
     private void OnBecameInvisible()
     {
-        gameObject.SetActive(false);
-        madeItToExit = true;
-        dead = true;
-    }
-
-    // behöver metod för att välja fiender och kanske slumpa fram vilken som ska spawnas
-
-    // Enemies-------------------------------------------------
-
-    void Enemy1()
-    {
-        // Grunt
-        hp = 10;
-        lifeCost = 1;
-        goldValue = 5;
-        sprite.color = Color.red;
-        pathController.moveSpeed = 5f;
-    }
-
-    void Enemy2()
-    {
-        // Hulk
-        hp = 100;
-        lifeCost = 3;
-        goldValue = 80;
-        sprite.color = Color.green;
-        pathController.moveSpeed = 2f;
+        //gameObject.SetActive(false);
+        //madeItToExit = true;
+        //dead = true;
     }
 }

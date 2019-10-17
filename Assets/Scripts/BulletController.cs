@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
+    public int damage;
     private Transform target;
     float velocity = 30f;
 
@@ -25,6 +26,8 @@ public class BulletController : MonoBehaviour
 
         if (direction.magnitude <= distanceThisFrame)
         {
+            EnemyController enemyTarget = target.gameObject.GetComponent<EnemyController>();
+            enemyTarget.LooseHP(damage);
             Impact();
             return;
         }
