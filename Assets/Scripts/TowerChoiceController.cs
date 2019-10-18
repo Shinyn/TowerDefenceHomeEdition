@@ -27,6 +27,8 @@ public class TowerChoiceController : MonoBehaviour
     // när tornet är byggt så kan man inte bygga ett nytt
     // ska kunna sälja torn?
 
+    // TextMesh PRO som underObject till varje towerChoice - ta price från parent och visa ovanför
+
     public void BuildTower()
     {
         towerBaseController.ChangeToTowerSelected(gameObject);

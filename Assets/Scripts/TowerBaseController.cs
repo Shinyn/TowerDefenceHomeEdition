@@ -24,6 +24,9 @@ public class TowerBaseController : MonoBehaviour
     private string enemiesTag = "Enemy";
     string currentTower;
     bool maxLevelTower = false;
+    public GameManager gameManager;
+    int upgradePrice; // behöver sättas när torn väljs
+    int towerLevel = 0;
 
     void Start()
     {
@@ -73,6 +76,18 @@ public class TowerBaseController : MonoBehaviour
 
         if (towerChosen == true && maxLevelTower == false)
         {
+            if (gameManager.gold >= upgradePrice)
+            {
+                towerLevel++;
+                if (towerLevel == 4)
+                    maxLevelTower = true;
+                
+                
+                // if (tornLvl == 4) - maxLevelTower == true;
+            }
+            // metod för varje tornUppgradering?
+            // möjlighet att kolla uppgradering innan val?
+
             //möjlighet att uppgradera om guld finns - if(gold >= upgradeprice) upgradeTower(currentTower) - currentTower detta gameObject
         }
     }
@@ -85,7 +100,7 @@ public class TowerBaseController : MonoBehaviour
         if (fireCountdown <= 0)
         {
             ShootBullet();
-            fireCountdown = 1f / fireRate; // infinite fireRate just nu
+            fireCountdown = 1f / fireRate; // infinite fireRate = 0f
         }
 
         fireCountdown -= Time.deltaTime;
@@ -106,7 +121,7 @@ public class TowerBaseController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, detectRadius);
     }
 
-    // Behöver ha en andra towerchoice-metod för att uppgradera tornen (inte disabla dom vid första valet)
+    // Behöver ha en andra towerchoice-metod för att uppgradera tornen? (inte disabla dom vid första valet)
     /*
         Archer lvl 2: dmg: 7 - 11 speed: fast range+
         Archer lvl 3: dmg: 10 - 16 speed: fast range++
@@ -132,20 +147,36 @@ public class TowerBaseController : MonoBehaviour
 
     private void UpgradeTower()
     {
-        switch (currentTower)
+        if (currentTower == "ArcherTower")
         {
-            case "ArcherTower":
-                bulletController.damage = Random.Range(4, 7);
-                break;
-            case "MageTower":
-                bulletController.damage = Random.Range(9, 18);
-                break;
-            case "BallistaTower":
-                bulletController.damage = Random.Range(6, 14);
-                break;
-            case "CannonTower":
-                bulletController.damage = Random.Range(8, 16);
-                break;
+            switch (towerLevel)
+            {
+                // Torn är lvl 1
+                case 1:
+                    // ändra stats till lvl 2
+                    break;
+                // Torn är lvl 2
+                case 2:
+                    // ändra stats till lvl 3
+                    break;
+                // Torn är lvl 3 -- Får se om det blir ett val här mellan 4a och 4b eller inte
+                case 3:
+                    // ändra stats till lvl 4 / 4a / 4b
+                    break;
+            }
+            // ändra alla stats 
+        }
+        else if (currentTower == "MageTower")
+        {
+
+        }
+        else if (currentTower == "BallistaTower")
+        {
+
+        }
+        else if (currentTower == "CannonTower")
+        {
+
         }
     }
     private void DisableTowerChoice()
@@ -198,6 +229,7 @@ public class TowerBaseController : MonoBehaviour
             currentTower = selectedTower.tag;
         }
         towerChosen = true;
+        towerLevel++;
         DisableTowerChoice();
     }
 

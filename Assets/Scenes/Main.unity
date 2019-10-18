@@ -956,6 +956,11 @@ PrefabInstance:
       propertyPath: fireRate
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1013629177671468418, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1617285360}
     - target: {fileID: 1013629177988604406, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
         type: 3}
       propertyPath: m_Layer
