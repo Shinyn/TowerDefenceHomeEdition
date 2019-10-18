@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab2;
     public GameObject enemyPrefab3;
     public GameObject enemyPrefab4;
+    public EnemyController enemyController; // behövs för att säga vilket guldvärde fienden har 
     public float delay = 1.0f;
 
     public List<Rigidbody2D> enemyPool = new List<Rigidbody2D>();

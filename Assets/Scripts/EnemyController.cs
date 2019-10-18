@@ -65,6 +65,11 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    public void ChangeGoldvalue(int gold)
+    {
+        goldValue = gold; // Använd tags, gör ett underobject med en tag och targeta sen parent
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Debug.Log("OUCH!!!");
