@@ -14,7 +14,7 @@ public class EnemySpawner : MonoBehaviour
 
     public List<Rigidbody2D> enemyPool = new List<Rigidbody2D>();
     int enemyPoolSize = 50;
-    bool expandableEnemyPool = true;
+    //bool expandableEnemyPool = true;
 
     private void Start()
     {

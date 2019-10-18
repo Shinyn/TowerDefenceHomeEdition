@@ -15,13 +15,11 @@ public class TowerChoiceController : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        // if gold >= price - BuildTower(); - removeGold
         if (gameManager.gold >= price)
         {
             gameManager.RemoveGold(price);
             BuildTower();
         }
-        
     }
 
     // onMouseDown så byt sprite på tornet

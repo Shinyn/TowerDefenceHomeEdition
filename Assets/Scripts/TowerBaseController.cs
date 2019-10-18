@@ -23,6 +23,7 @@ public class TowerBaseController : MonoBehaviour
     float lastTimeFired;
     private string enemiesTag = "Enemy";
     string currentTower;
+    bool maxLevelTower = false;
 
     void Start()
     {
@@ -63,11 +64,16 @@ public class TowerBaseController : MonoBehaviour
     {
         if (towerChosen == false)
         {
-            if (showingTowers == true)
+            if (showingTowers == true) // ha en bool för maxLvlTorn?
                 DisableTowerChoice();
 
             else
                 EnableTowerChoice();
+        }
+
+        if (towerChosen == true && maxLevelTower == false)
+        {
+            //möjlighet att uppgradera om guld finns - if(gold >= upgradeprice) upgradeTower(currentTower) - currentTower detta gameObject
         }
     }
 
@@ -100,6 +106,48 @@ public class TowerBaseController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, detectRadius);
     }
 
+    // Behöver ha en andra towerchoice-metod för att uppgradera tornen (inte disabla dom vid första valet)
+    /*
+        Archer lvl 2: dmg: 7 - 11 speed: fast range+
+        Archer lvl 3: dmg: 10 - 16 speed: fast range++
+        Archer lvl 4a: dmg 13 - 19 speed: very fast range+++
+        Archer lvl 4b: dmg 35 - 65 speed: slow range+++++
+
+        Mage lvl 2: dmg: 23 - 43 speed: slow range+
+        Mage lvl 3: dmg: 40 - 74 speed: slow range+++
+        Mage lvl 4a: dmg: 76 - 140 speed: very slow range++++
+        Mage lvl 4b: dmg: 42 - 78 speed: slow range++++
+
+        Cannon lvl 2: dmg: 20 - 40 speed: very slow range same
+        Cannon lvl 3: dmg: 30 - 60 speed: very slow range++
+        Cannon lvl 4a: dmg: 50 - 100 speed: very slow range++
+        Cannon lvl 4b: dmg: 60 - 110 speed: very slow range same
+
+        Ballista lvl 2: dmg: 9 - 12 speed: + range+
+        Ballista lvl 3: dmg: 18 - 30 speed: ++ range: ++
+        Ballista lvl 4a: dmg: 36 - 54 speed: ++ range +++
+        Ballista lvl 4b: dmg: 48 - 72 speed: +++ range ++
+        asd
+    */
+
+    private void UpgradeTower()
+    {
+        switch (currentTower)
+        {
+            case "ArcherTower":
+                bulletController.damage = Random.Range(4, 7);
+                break;
+            case "MageTower":
+                bulletController.damage = Random.Range(9, 18);
+                break;
+            case "BallistaTower":
+                bulletController.damage = Random.Range(6, 14);
+                break;
+            case "CannonTower":
+                bulletController.damage = Random.Range(8, 16);
+                break;
+        }
+    }
     private void DisableTowerChoice()
     {
         transform.GetChild(0).gameObject.SetActive(false);

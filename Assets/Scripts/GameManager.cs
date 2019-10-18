@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         goldText.text = gold.ToString();
     }
 
-    public void RemoveGold(int goldSpent) // används inte än - behöver ha kontakt med TowerChoiceController
+    public void RemoveGold(int goldSpent)
     {
         gold -= goldSpent;
         goldText.text = gold.ToString();
