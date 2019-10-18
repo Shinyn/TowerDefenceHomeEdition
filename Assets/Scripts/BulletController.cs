@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
+    [HideInInspector]
     public int damage;
     private Transform target;
     float velocity = 30f;
@@ -28,6 +29,7 @@ public class BulletController : MonoBehaviour
         {
             EnemyController enemyTarget = target.gameObject.GetComponent<EnemyController>();
             enemyTarget.LooseHP(damage);
+            Debug.Log("Dmg is: " + damage);
             Impact();
             return;
         }

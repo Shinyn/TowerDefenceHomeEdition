@@ -6,7 +6,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     int lives;
-    int gold;
+    public int gold;
     public TextMeshPro livesText;
     public TextMeshPro goldText;
 
@@ -42,6 +42,12 @@ public class GameManager : MonoBehaviour
     public void AddGold(int goldGained)
     {
         gold += goldGained;
+        goldText.text = gold.ToString();
+    }
+
+    public void RemoveGold(int goldSpent) // används inte än - behöver ha kontakt med TowerChoiceController
+    {
+        gold -= goldSpent;
         goldText.text = gold.ToString();
     }
 

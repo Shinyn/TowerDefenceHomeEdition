@@ -627,7 +627,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c687513226ed9c48bc6f980743df4cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  price: 70
   towerBaseController: {fileID: 1363297361}
+  gameManager: {fileID: 1617285360}
 --- !u!1 &762134220 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1013629176635014270, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
@@ -646,7 +648,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c687513226ed9c48bc6f980743df4cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  price: 112
   towerBaseController: {fileID: 1363297361}
+  gameManager: {fileID: 1617285360}
 --- !u!1 &1260962441
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,6 +722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f453a473988402649b7865f969c29469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gold: 0
   livesText: {fileID: 50171925}
   goldText: {fileID: 145536947}
 --- !u!4 &1617285361
@@ -752,7 +757,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c687513226ed9c48bc6f980743df4cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  price: 90
   towerBaseController: {fileID: 1363297361}
+  gameManager: {fileID: 1617285360}
 --- !u!1 &1902864483
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,6 +813,7 @@ MonoBehaviour:
     type: 3}
   enemyPrefab4: {fileID: 931875745280395879, guid: a906ee199d062684b98fbf1ee0d50705,
     type: 3}
+  enemyController: {fileID: 0}
   delay: 1.5
   enemyPool: []
 --- !u!1 &1978969581 stripped
@@ -826,7 +834,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c687513226ed9c48bc6f980743df4cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  price: 70
   towerBaseController: {fileID: 1363297361}
+  gameManager: {fileID: 1617285360}
 --- !u!1001 &1013629177550336158
 PrefabInstance:
   m_ObjectHideFlags: 0

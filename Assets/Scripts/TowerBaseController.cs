@@ -22,14 +22,7 @@ public class TowerBaseController : MonoBehaviour
     float fireDelay = 0.1f;
     float lastTimeFired;
     private string enemiesTag = "Enemy";
-
-    enum TowerType
-    {
-        Archer,
-        Mage,
-        Cannon,
-        Ballista
-    };
+    string currentTower;
 
     void Start()
     {
@@ -127,30 +120,34 @@ public class TowerBaseController : MonoBehaviour
 
     public void ChangeToTowerSelected(GameObject selectedTower)
     {
-        baseColor.color = selectedTower.GetComponent<SpriteRenderer>().color; //tag
+        baseColor.color = selectedTower.GetComponent<SpriteRenderer>().color;
         if (selectedTower.tag == "ArcherTower")
         {
-            bulletController.damage = Random.Range(4, 6);
+            bulletController.damage = Random.Range(4, 7); // behöver randomisera varje gång den skjuter
             fireRate = 2;
             detectRadius = 2f;
+            currentTower = selectedTower.tag;
         }
         else if (selectedTower.tag == "MageTower")
         {
-            bulletController.damage = Random.Range(9, 17);
+            bulletController.damage = Random.Range(9, 18);
             fireRate = 1;
             detectRadius = 1.5f;
+            currentTower = selectedTower.tag;
         }
         else if (selectedTower.tag == "BallistaTower")
         {
-            bulletController.damage = Random.Range(6, 13);
+            bulletController.damage = Random.Range(6, 14);
             fireRate = 1;
             detectRadius = 1.2f;
+            currentTower = selectedTower.tag;
         }
         else if (selectedTower.tag == "CannonTower")
         {
-            bulletController.damage = Random.Range(8, 15);
+            bulletController.damage = Random.Range(8, 16);
             fireRate = 1;
             detectRadius = 1.8f;
+            currentTower = selectedTower.tag;
         }
         towerChosen = true;
         DisableTowerChoice();
@@ -172,14 +169,26 @@ public class TowerBaseController : MonoBehaviour
 
     public void ShootBullet()
     {
-        //Debug.Log("Shoot");
-        
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         BulletController bulletController = bullet.GetComponent<BulletController>();
+
+        switch (currentTower)
+        {
+            case "ArcherTower":
+                bulletController.damage = Random.Range(4, 7);
+                break;
+            case "MageTower":
+                bulletController.damage = Random.Range(9, 18);
+                break;
+            case "BallistaTower":
+                bulletController.damage = Random.Range(6, 14);
+                break;
+            case "CannonTower":
+                bulletController.damage = Random.Range(8, 16);
+                break;
+        }
+        
         if (bulletController != null)
         bulletController.TrackTarget(target);
-        
     }
-    // Skicka med vilket torn - ta färgen?
-
 }
