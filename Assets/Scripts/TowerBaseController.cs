@@ -76,6 +76,8 @@ public class TowerBaseController : MonoBehaviour
 
         if (towerChosen == true && maxLevelTower == false)
         {
+            //Debug.Log("now towerLevel is: " + towerLevel);
+            // Måste ha in goldCost Ovanför tornet och om man klickar för att se
             if (gameManager.gold >= upgradePrice)
             {
                 towerLevel++;
@@ -83,7 +85,6 @@ public class TowerBaseController : MonoBehaviour
                     maxLevelTower = true;
                 UpgradeTower();
                 // ta bort guld kostnaden
-                // if (tornLvl == 4) - maxLevelTower == true;
             }
             // metod för varje tornUppgradering?
             // möjlighet att kolla uppgradering innan val?
@@ -272,6 +273,7 @@ public class TowerBaseController : MonoBehaviour
         towerChosen = true;
         towerLevel++;
         DisableTowerChoice();
+        //Debug.Log("tower level: " + towerLevel);
     }
 
     
