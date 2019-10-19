@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         lives = 20;
-        gold = 300;
+        gold = 3000;
         livesText.text = lives.ToString();
     }
 

@@ -7,7 +7,7 @@ public class TowerBaseController : MonoBehaviour
     [Header("Attributes")]
     [Range(1f, 3f)]
     public float fireRate = 3f;
-    private float detectRadius = 0f;
+    private float detectRadius = 0f; // Ändra med 0.5 intervall
 
     [Header("Other")]
     public GameObject bulletPrefab;
@@ -76,14 +76,17 @@ public class TowerBaseController : MonoBehaviour
 
         if (towerChosen == true && maxLevelTower == false)
         {
-            //Debug.Log("now towerLevel is: " + towerLevel);
-            // Måste ha in goldCost Ovanför tornet och om man klickar för att se
+            
+            //Debug.Log("upgradePrice is: " + upgradePrice);
+            // Måste ha in goldCost Ovanför tornet och om man klickar så man ser kostnaden
             if (gameManager.gold >= upgradePrice)
             {
                 towerLevel++;
+                //Debug.Log("now towerLevel is: " + towerLevel);
                 if (towerLevel == 4)
                     maxLevelTower = true;
                 UpgradeTower();
+                gameManager.RemoveGold(upgradePrice);
                 // ta bort guld kostnaden
             }
             // metod för varje tornUppgradering?
@@ -145,6 +148,11 @@ public class TowerBaseController : MonoBehaviour
         Ballista lvl 4b: dmg: 48 - 72 speed: +++ range ++
         asd
     */
+    private void BulletDamage(int minDmg, int maxDmg)
+    {
+        bulletController.damage = Random.Range(minDmg, maxDmg);
+        //Debug.Log("bulletDamage changed");
+    }
 
     private void UpgradeTower()
     {
@@ -153,16 +161,27 @@ public class TowerBaseController : MonoBehaviour
             switch (towerLevel)
             {
                 // Torn är lvl 1 -> ändra stats till lvl 2
-                case 1:
-                    bulletController.damage = Random.Range(7, 12);
+                case 2:
+                    upgradePrice = 160;
+                    BulletDamage(7, 12);
+                    fireRate = 1.5f;
+                    detectRadius = 2f;
+                    //bulletController.damage = Random.Range(7, 12);
                     break;
                 // Torn är lvl 2 -> ändra stats till lvl 3
-                case 2:
-                    bulletController.damage = Random.Range(10, 17);
+                case 3:
+                    upgradePrice = 230;
+                    BulletDamage(10, 17);
+                    fireRate = 2f;
+                    detectRadius = 2.5f;
+                    //bulletController.damage = Random.Range(10, 17);
                     break;
                 // Torn är lvl 3 -> ändra stats till lvl 4 / 4a / 4b -- Får se om det blir ett val här mellan 4a och 4b eller inte
-                case 3:
-                    bulletController.damage = Random.Range(13, 20);
+                case 4:
+                    BulletDamage(13, 20);
+                    fireRate = 3f;
+                    detectRadius = 3f;
+                    //bulletController.damage = Random.Range(13, 20);
                     break;
             }
         }
@@ -171,16 +190,27 @@ public class TowerBaseController : MonoBehaviour
             switch (towerLevel)
             {
                 // Torn är lvl 1 -> ändra stats till lvl 2
-                case 1:
-                    bulletController.damage = Random.Range(23, 44);
+                case 2:
+                    upgradePrice = 216;
+                    BulletDamage(23, 44);
+                    fireRate = 1.3f;
+                    detectRadius = 1.8f;
+                    //bulletController.damage = Random.Range(23, 44);
                     break;
                 // Torn är lvl 2 -> ändra stats till lvl 3
-                case 2:
-                    bulletController.damage = Random.Range(40, 75);
+                case 3:
+                    upgradePrice = 270;
+                    BulletDamage(40, 75);
+                    fireRate = 1.6f;
+                    detectRadius = 2.2f;
+                    //bulletController.damage = Random.Range(40, 75);
                     break;
                 // Torn är lvl 3 -> ändra stats till lvl 4 / 4a / 4b -- Får se om det blir ett val här mellan 4a och 4b eller inte
-                case 3:
-                    bulletController.damage = Random.Range(76, 141);
+                case 4:
+                    BulletDamage(76, 141);
+                    fireRate = 1.8f;
+                    detectRadius = 2.5f;
+                    //bulletController.damage = Random.Range(76, 141);
                     break;
             }
         }
@@ -189,16 +219,27 @@ public class TowerBaseController : MonoBehaviour
             switch (towerLevel)
             {
                 // Torn är lvl 1 -> ändra stats till lvl 2
-                case 1:
-                    // 
+                case 2:
+                    upgradePrice = 160;
+                    BulletDamage(9, 13);
+                    fireRate = 1.5f;
+                    detectRadius = 1.8f;
+                    //bulletController.damage = Random.Range(9, 13);
                     break;
                 // Torn är lvl 2 -> ändra stats till lvl 3
-                case 2:
-                    // 
+                case 3:
+                    upgradePrice = 230;
+                    BulletDamage(18, 31);
+                    fireRate = 1.8f;
+                    detectRadius = 2.2f;
+                    //bulletController.damage = Random.Range(18, 31);
                     break;
                 // Torn är lvl 3 -> ändra stats till lvl 4 / 4a / 4b -- Får se om det blir ett val här mellan 4a och 4b eller inte
-                case 3:
-                    // 
+                case 4:
+                    BulletDamage(48, 73);
+                    fireRate = 2f;
+                    detectRadius = 2.5f;
+                    //bulletController.damage = Random.Range(48, 73);
                     break;
             }
         }
@@ -207,20 +248,172 @@ public class TowerBaseController : MonoBehaviour
             switch (towerLevel)
             {
                 // Torn är lvl 1 -> ändra stats till lvl 2
-                case 1:
-                    // 
+                case 2:
+                    upgradePrice = 288;
+                    BulletDamage(20, 41);
+                    fireRate = 1.5f;
+                    //bulletController.damage = Random.Range(20, 41);
                     break;
                 // Torn är lvl 2 -> ändra stats till lvl 3
-                case 2:
-                    // 
+                case 3:
+                    upgradePrice = 337;
+                    BulletDamage(30, 61);
+                    detectRadius = 2f;
+                    //bulletController.damage = Random.Range(30, 61);
                     break;
                 // Torn är lvl 3 -> ändra stats till lvl 4 / 4a / 4b -- Får se om det blir ett val här mellan 4a och 4b eller inte
-                case 3:
-                    // 
+                case 4:
+                    BulletDamage(60, 101);
+                    fireRate = 2f;
+                    detectRadius = 2.5f;
+                    //bulletController.damage = Random.Range(60, 101);
                     break;
             }
         }
     }
+    
+
+    public void ChangeToTowerSelected(GameObject selectedTower)
+    {
+        baseColor.color = selectedTower.GetComponent<SpriteRenderer>().color;
+        if (selectedTower.tag == "ArcherTower")
+        {
+            //bulletController.damage = Random.Range(4, 7); // behöver randomisera varje gång den skjuter
+            BulletDamage(4, 7);
+            fireRate = 1;
+            detectRadius = 1.5f;
+            currentTower = selectedTower.tag;
+            upgradePrice = 110;
+        }
+        else if (selectedTower.tag == "MageTower")
+        {
+            //bulletController.damage = Random.Range(9, 18);
+            BulletDamage(9, 18);
+            fireRate = 1;
+            detectRadius = 1.5f;
+            currentTower = selectedTower.tag;
+            upgradePrice = 144;
+        }
+        else if (selectedTower.tag == "BallistaTower")
+        {
+            //bulletController.damage = Random.Range(6, 14);
+            BulletDamage(6, 14);
+            fireRate = 1;
+            detectRadius = 1.5f;
+            currentTower = selectedTower.tag;
+            upgradePrice = 110;
+        }
+        else if (selectedTower.tag == "CannonTower")
+        {
+            //bulletController.damage = Random.Range(8, 16);
+            BulletDamage(8, 16);
+            fireRate = 1;
+            detectRadius = 1.5f;
+            currentTower = selectedTower.tag;
+            upgradePrice = 198;
+        }
+        towerChosen = true;
+        towerLevel++;
+        DisableTowerChoice();
+        Debug.Log("tower level: " + towerLevel);
+    }
+
+    
+    public void DetectEnemies()
+    {
+        Collider2D hit = Physics2D.OverlapCircle(transform.position, detectRadius);
+        if (hit != null && hit.tag == "Enemy")
+        {
+            detectedEnemy = true; // Bra ställe att lägga en dot för något torn :D
+        }
+        else
+        {
+            detectedEnemy = false;
+        }
+    }
+
+    public void ShootBullet()
+    {
+        // instansiera olika bullets?
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        BulletController bulletController = bullet.GetComponent<BulletController>();
+
+        switch (currentTower) // Måste kolla towerLevel här och ändra hur det ser ut just nu
+        {
+            case "ArcherTower":
+                switch (towerLevel)
+                {
+                    case 1:
+                        BulletDamage(4, 7);
+                        break;
+                    case 2:
+                        BulletDamage(7, 12);
+                        break;
+                    case 3:
+                        BulletDamage(10, 17);
+                        break;
+                    case 4:
+                        BulletDamage(16, 26);
+                        break;
+                }
+                break;
+            case "MageTower":
+                switch (towerLevel)
+                {
+                    case 1:
+                        BulletDamage(9, 18);
+                        break;
+                    case 2:
+                        BulletDamage(23, 44);
+                        break;
+                    case 3:
+                        BulletDamage(40, 75);
+                        break;
+                    case 4:
+                        BulletDamage(76, 141);
+                        break;
+                }
+                break;
+            case "BallistaTower":
+                switch (towerLevel)
+                {
+                    case 1:
+                        BulletDamage(6, 13);
+                        break;
+                    case 2:
+                        BulletDamage(18, 31);
+                        break;
+                    case 3:
+                        BulletDamage(36, 55);
+                        break;
+                    case 4:
+                        BulletDamage(48, 73);
+                        break;
+                }
+                break;
+            case "CannonTower":
+                switch (towerLevel)
+                {
+                    case 1:
+                        BulletDamage(8, 16);
+                        break;
+                    case 2:
+                        BulletDamage(20, 41);
+                        break;
+                    case 3:
+                        BulletDamage(30, 61);
+                        break;
+                    case 4:
+                        BulletDamage(60, 111);
+                        break;
+                }
+                break;
+        }
+        
+        if (bulletController != null)
+        bulletController.TrackTarget(target);
+    }
+
     private void DisableTowerChoice()
     {
         transform.GetChild(0).gameObject.SetActive(false);
@@ -237,81 +430,5 @@ public class TowerBaseController : MonoBehaviour
         transform.GetChild(2).gameObject.SetActive(true);
         transform.GetChild(3).gameObject.SetActive(true);
         showingTowers = true;
-    }
-
-    public void ChangeToTowerSelected(GameObject selectedTower)
-    {
-        baseColor.color = selectedTower.GetComponent<SpriteRenderer>().color;
-        if (selectedTower.tag == "ArcherTower")
-        {
-            bulletController.damage = Random.Range(4, 7); // behöver randomisera varje gång den skjuter (Fixad)
-            fireRate = 2;
-            detectRadius = 2f;
-            currentTower = selectedTower.tag;
-        }
-        else if (selectedTower.tag == "MageTower")
-        {
-            bulletController.damage = Random.Range(9, 18);
-            fireRate = 1;
-            detectRadius = 1.5f;
-            currentTower = selectedTower.tag;
-        }
-        else if (selectedTower.tag == "BallistaTower")
-        {
-            bulletController.damage = Random.Range(6, 14);
-            fireRate = 1;
-            detectRadius = 1.2f;
-            currentTower = selectedTower.tag;
-        }
-        else if (selectedTower.tag == "CannonTower")
-        {
-            bulletController.damage = Random.Range(8, 16);
-            fireRate = 1;
-            detectRadius = 1.8f;
-            currentTower = selectedTower.tag;
-        }
-        towerChosen = true;
-        towerLevel++;
-        DisableTowerChoice();
-        //Debug.Log("tower level: " + towerLevel);
-    }
-
-    
-    public void DetectEnemies()
-    {
-        Collider2D hit = Physics2D.OverlapCircle(transform.position, detectRadius);
-        if (hit != null && hit.tag == "Enemy")
-        {
-            detectedEnemy = true;
-        }
-        else
-        {
-            detectedEnemy = false;
-        }
-    }
-
-    public void ShootBullet()
-    {
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-        BulletController bulletController = bullet.GetComponent<BulletController>();
-
-        switch (currentTower) // Måste kolla towerLevel här och ändra hur det ser ut just nu
-        {
-            case "ArcherTower":
-                bulletController.damage = Random.Range(4, 7);
-                break;
-            case "MageTower":
-                bulletController.damage = Random.Range(9, 18);
-                break;
-            case "BallistaTower":
-                bulletController.damage = Random.Range(6, 14);
-                break;
-            case "CannonTower":
-                bulletController.damage = Random.Range(8, 16);
-                break;
-        }
-        
-        if (bulletController != null)
-        bulletController.TrackTarget(target);
     }
 }
