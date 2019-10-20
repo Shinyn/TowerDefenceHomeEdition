@@ -12,21 +12,25 @@ public class TowerBaseController : MonoBehaviour
     [Header("Other")]
     public GameObject bulletPrefab;
     public BulletController bulletController;
+    public GameManager gameManager;
     float fireCountdown = 0f;
     float repeatRate = 0.25f;
     Transform target;
-    private bool showingTowers;
     SpriteRenderer baseColor;
-    bool towerChosen = false;
     bool detectedEnemy = false;
     float fireDelay = 0.1f;
     float lastTimeFired;
     private string enemiesTag = "Enemy";
+    TowerChoiceController tcc;
+
+    // Tower variables
+    bool towerChosen = false;
+    private bool showingTowers;
     string currentTower;
     bool maxLevelTower = false;
-    public GameManager gameManager;
     int upgradePrice;
     int towerLevel = 0;
+    int towerValue = 0;
 
     void Start()
     {
@@ -34,6 +38,7 @@ public class TowerBaseController : MonoBehaviour
         lastTimeFired = Time.time;
         DisableTowerChoice();
         baseColor = gameObject.GetComponent<SpriteRenderer>();
+        tcc = gameObject.GetComponentInChildren<TowerChoiceController>();
     }
 
     void UpdateTarget()
@@ -61,6 +66,18 @@ public class TowerBaseController : MonoBehaviour
             target = nearestEnemy.transform;
         }
 
+    }
+
+    private void SellTower() {
+        //int cashBack = Mathf.RoundToInt(towerValue * 0.9);  - Funkar inte av någon anledning, har varken double eller float :S
+        int cashBack = 50;
+        gameManager.AddGold(cashBack);
+        towerChosen = false;
+        detectRadius = 0;
+        BulletDamage(0, 0);
+        towerLevel = 0;
+        
+        // Disabla torn specialiteter om dom har några
     }
 
     private void OnMouseDown()
@@ -145,7 +162,6 @@ public class TowerBaseController : MonoBehaviour
     private void BulletDamage(int minDmg, int maxDmg)
     {
         bulletController.damage = Random.Range(minDmg, maxDmg);
-        //Debug.Log("bulletDamage changed");
     }
 
     private void UpgradeTower()
@@ -156,6 +172,7 @@ public class TowerBaseController : MonoBehaviour
             {
                 // Torn är lvl 1 -> ändra stats till lvl 2
                 case 2:
+                    towerValue += upgradePrice;
                     upgradePrice = 160;
                     BulletDamage(7, 12);
                     fireRate = 1.5f;
@@ -163,6 +180,7 @@ public class TowerBaseController : MonoBehaviour
                     break;
                 // Torn är lvl 2 -> ändra stats till lvl 3
                 case 3:
+                    towerValue += upgradePrice;
                     upgradePrice = 230;
                     BulletDamage(10, 17);
                     fireRate = 2f;
@@ -173,6 +191,7 @@ public class TowerBaseController : MonoBehaviour
                     BulletDamage(13, 20);
                     fireRate = 3f;
                     detectRadius = 3f;
+                    towerValue += upgradePrice;
                     break;
             }
         }
@@ -182,6 +201,7 @@ public class TowerBaseController : MonoBehaviour
             {
                 // Torn är lvl 1 -> ändra stats till lvl 2
                 case 2:
+                    towerValue += upgradePrice;
                     upgradePrice = 216;
                     BulletDamage(23, 44);
                     fireRate = 1.3f;
@@ -189,6 +209,7 @@ public class TowerBaseController : MonoBehaviour
                     break;
                 // Torn är lvl 2 -> ändra stats till lvl 3
                 case 3:
+                    towerValue += upgradePrice;
                     upgradePrice = 270;
                     BulletDamage(40, 75);
                     fireRate = 1.6f;
@@ -199,6 +220,7 @@ public class TowerBaseController : MonoBehaviour
                     BulletDamage(76, 141);
                     fireRate = 1.8f;
                     detectRadius = 2.5f;
+                    towerValue += upgradePrice;
                     break;
             }
         }
@@ -208,6 +230,7 @@ public class TowerBaseController : MonoBehaviour
             {
                 // Torn är lvl 1 -> ändra stats till lvl 2
                 case 2:
+                    towerValue += upgradePrice;
                     upgradePrice = 160;
                     BulletDamage(9, 13);
                     fireRate = 1.5f;
@@ -215,6 +238,7 @@ public class TowerBaseController : MonoBehaviour
                     break;
                 // Torn är lvl 2 -> ändra stats till lvl 3
                 case 3:
+                    towerValue += upgradePrice;
                     upgradePrice = 230;
                     BulletDamage(18, 31);
                     fireRate = 1.8f;
@@ -225,7 +249,7 @@ public class TowerBaseController : MonoBehaviour
                     BulletDamage(48, 73);
                     fireRate = 2f;
                     detectRadius = 2.5f;
-                    //bulletController.damage = Random.Range(48, 73);
+                    towerValue += upgradePrice;
                     break;
             }
         }
@@ -235,12 +259,14 @@ public class TowerBaseController : MonoBehaviour
             {
                 // Torn är lvl 1 -> ändra stats till lvl 2
                 case 2:
+                    towerValue += upgradePrice;
                     upgradePrice = 288;
                     BulletDamage(20, 41);
                     fireRate = 1.5f;
                     break;
                 // Torn är lvl 2 -> ändra stats till lvl 3
                 case 3:
+                    towerValue += upgradePrice;
                     upgradePrice = 337;
                     BulletDamage(30, 61);
                     detectRadius = 2f;
@@ -250,6 +276,7 @@ public class TowerBaseController : MonoBehaviour
                     BulletDamage(60, 101);
                     fireRate = 2f;
                     detectRadius = 2.5f;
+                    towerValue += upgradePrice;
                     break;
             }
         }
@@ -266,6 +293,7 @@ public class TowerBaseController : MonoBehaviour
             detectRadius = 1.5f;
             currentTower = selectedTower.tag;
             upgradePrice = 110;
+            towerValue = tcc.price;
         }
         else if (selectedTower.tag == "MageTower")
         {
@@ -274,6 +302,7 @@ public class TowerBaseController : MonoBehaviour
             detectRadius = 1.5f;
             currentTower = selectedTower.tag;
             upgradePrice = 144;
+            towerValue = tcc.price;
         }
         else if (selectedTower.tag == "BallistaTower")
         {
@@ -282,6 +311,7 @@ public class TowerBaseController : MonoBehaviour
             detectRadius = 1.5f;
             currentTower = selectedTower.tag;
             upgradePrice = 110;
+            towerValue = tcc.price;
         }
         else if (selectedTower.tag == "CannonTower")
         {
@@ -290,6 +320,7 @@ public class TowerBaseController : MonoBehaviour
             detectRadius = 1.5f;
             currentTower = selectedTower.tag;
             upgradePrice = 198;
+            towerValue = tcc.price;
         }
         towerChosen = true;
         towerLevel++;
