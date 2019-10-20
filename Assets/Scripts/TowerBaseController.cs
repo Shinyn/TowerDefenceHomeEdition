@@ -21,7 +21,10 @@ public class TowerBaseController : MonoBehaviour
     float fireDelay = 0.1f;
     float lastTimeFired;
     private string enemiesTag = "Enemy";
-    TowerChoiceController tcc;
+    public TowerChoiceController tcc;
+    public TowerChoiceController tcc1;
+    public TowerChoiceController tcc2;
+    public TowerChoiceController tcc3;
 
     // Tower variables
     bool towerChosen = false;
@@ -30,6 +33,7 @@ public class TowerBaseController : MonoBehaviour
     bool maxLevelTower = false;
     int upgradePrice;
     int towerLevel = 0;
+    [SerializeField]
     int towerValue = 0;
 
     void Start()
@@ -38,7 +42,7 @@ public class TowerBaseController : MonoBehaviour
         lastTimeFired = Time.time;
         DisableTowerChoice();
         baseColor = gameObject.GetComponent<SpriteRenderer>();
-        tcc = gameObject.GetComponentInChildren<TowerChoiceController>();
+        //tcc = gameObject.GetComponentInChildren<TowerChoiceController>(); // Har 4 tcc så den vet inte vilken den ska ta och blir null?
     }
 
     void UpdateTarget()
@@ -68,13 +72,14 @@ public class TowerBaseController : MonoBehaviour
 
     }
 
-    private void SellTower() {
+    private void SellTower() { // Gör ett eget lager för sell, upgrade och base tower
         int cashBack = Mathf.RoundToInt(towerValue * 0.9f); // GLÖMDE ETT F!!! :@
         gameManager.AddGold(cashBack);
         towerChosen = false;
         detectRadius = 0;
         BulletDamage(0, 0);
         towerLevel = 0;
+        towerValue = 0;
         baseColor.color = Color.white;
         // Disabla torn specialiteter om dom har några
     }
@@ -293,6 +298,7 @@ public class TowerBaseController : MonoBehaviour
             currentTower = selectedTower.tag;
             upgradePrice = 110;
             towerValue = tcc.price;
+            Debug.Log("tcc value: " + tcc.price);
         }
         else if (selectedTower.tag == "MageTower")
         {
@@ -301,7 +307,8 @@ public class TowerBaseController : MonoBehaviour
             detectRadius = 1.5f;
             currentTower = selectedTower.tag;
             upgradePrice = 144;
-            towerValue = tcc.price;
+            towerValue = tcc1.price;
+            Debug.Log("tcc1 value: " + tcc1.price);
         }
         else if (selectedTower.tag == "BallistaTower")
         {
@@ -310,7 +317,8 @@ public class TowerBaseController : MonoBehaviour
             detectRadius = 1.5f;
             currentTower = selectedTower.tag;
             upgradePrice = 110;
-            towerValue = tcc.price;
+            towerValue = tcc2.price;
+            Debug.Log("tcc2 value: " + tcc2.price);
         }
         else if (selectedTower.tag == "CannonTower")
         {
@@ -319,9 +327,11 @@ public class TowerBaseController : MonoBehaviour
             detectRadius = 1.5f;
             currentTower = selectedTower.tag;
             upgradePrice = 198;
-            towerValue = tcc.price;
+            towerValue = tcc3.price;
+            Debug.Log("tcc3 value: " + tcc3.price);
         }
         towerChosen = true;
+        //towerValue = tcc.price;
         towerLevel++;
         DisableTowerChoice();
         //Debug.Log("tower level: " + towerLevel);

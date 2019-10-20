@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class EnemyController : MonoBehaviour
     bool dead = false;
     public int startHp;
     private bool neverUsed = true;
+    public Image healthbar;
 
     public delegate void EnemyEscaped(int lifeLost);
     public static event EnemyEscaped enemyEscaped;
@@ -26,9 +28,11 @@ public class EnemyController : MonoBehaviour
     public delegate void EnemyKilled(int goldgained);
     public static event EnemyKilled enemyKilled;
 
+    /*
+     Behöver reference till image hp, visa den när fienden blir attackerad första gången
+         */
     private void Start()
     {
-        //startHp = hp;
         time = Time.time;
         sprite = gameObject.GetComponent<SpriteRenderer>();
     }
@@ -39,6 +43,7 @@ public class EnemyController : MonoBehaviour
             startHp = hp;
       else
             hp = startHp;
+        healthbar.fillAmount = hp / startHp;
     }
 
     private void OnDisable()
@@ -72,25 +77,17 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Debug.Log("OUCH!!!");
+        
     }
 
     public void LooseHP(int dmgTaken)
     {
         hp -= dmgTaken;
+        healthbar.fillAmount = hp / startHp;
+        //Debug.Log("Hp is: " + hp);
         if (hp <= 0)
         {
             dead = true;
         }
-        //Debug.Log("hp = " + hp);
-        // if bullet hit - take dmg
-        // if (dmgTaken > hp) {dead = true;}
-    }
-
-    private void OnBecameInvisible()
-    {
-        //gameObject.SetActive(false);
-        //madeItToExit = true;
-        //dead = true;
     }
 }
