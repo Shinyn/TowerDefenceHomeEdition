@@ -21,6 +21,7 @@ public class EnemyController : MonoBehaviour
     public int startHp;
     private bool neverUsed = true;
     public Image healthbar;
+    public Image hpBackground;
 
     public delegate void EnemyEscaped(int lifeLost);
     public static event EnemyEscaped enemyEscaped;
@@ -33,6 +34,8 @@ public class EnemyController : MonoBehaviour
          */
     private void Start()
     {
+        healthbar.enabled = false;
+        hpBackground.enabled = false;
         time = Time.time;
         sprite = gameObject.GetComponent<SpriteRenderer>();
     }
@@ -43,7 +46,6 @@ public class EnemyController : MonoBehaviour
             startHp = hp;
       else
             hp = startHp;
-        healthbar.fillAmount = hp / startHp;
     }
 
     private void OnDisable()
@@ -57,6 +59,8 @@ public class EnemyController : MonoBehaviour
         if (madeItToExit == true && Time.time > time + timeCheckDelay)
         {
             enemyEscaped?.Invoke(lifeCost);
+            healthbar.enabled = false;
+            hpBackground.enabled = false;
             madeItToExit = false;
             time = Time.time;
         }
@@ -75,19 +79,24 @@ public class EnemyController : MonoBehaviour
         goldValue = gold; // Använd tags, gör ett underobject med en tag och targeta sen parent
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private float ChangeHpBar()
     {
-        
+        float result = (float)hp / startHp; // Behövde casta till en float
+        Debug.Log("result: " + result);
+        return result;
     }
 
     public void LooseHP(int dmgTaken)
     {
         hp -= dmgTaken;
-        healthbar.fillAmount = hp / startHp;
-        //Debug.Log("Hp is: " + hp);
+        hpBackground.enabled = true;
+        healthbar.enabled = true;
+        healthbar.fillAmount = ChangeHpBar();
         if (hp <= 0)
         {
             dead = true;
+            healthbar.enabled = false;
+            hpBackground.enabled = false;
         }
     }
 }

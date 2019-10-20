@@ -57,6 +57,7 @@ MonoBehaviour:
   madeItToExit: 0
   startHp: 0
   healthbar: {fileID: 5889213569569178501}
+  hpBackground: {fileID: 6328674842004230985}
 --- !u!212 &931875745280395878
 SpriteRenderer:
   m_ObjectHideFlags: 0
