@@ -69,14 +69,13 @@ public class TowerBaseController : MonoBehaviour
     }
 
     private void SellTower() {
-        //int cashBack = Mathf.RoundToInt(towerValue * 0.9);  - Funkar inte av någon anledning, har varken double eller float :S
-        int cashBack = 50;
+        int cashBack = Mathf.RoundToInt(towerValue * 0.9f); // GLÖMDE ETT F!!! :@
         gameManager.AddGold(cashBack);
         towerChosen = false;
         detectRadius = 0;
         BulletDamage(0, 0);
         towerLevel = 0;
-        
+        baseColor.color = Color.white;
         // Disabla torn specialiteter om dom har några
     }
 
