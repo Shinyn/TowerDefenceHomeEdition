@@ -14,9 +14,11 @@ public class GameManager : MonoBehaviour
     AudioSource goblinDeath;
     AudioSource gameOver;
     public EnemySpawner enemySpawner;
+    public GameObject gameOverScreen;
 
     private void Start()
     {
+        gameOverScreen.SetActive(false);
         AudioSource[] audioClips = GetComponents<AudioSource>();
         soundTrack = audioClips[0];
         lifeLost = audioClips[1];
@@ -73,8 +75,9 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         gameOver.Play();
-        enemySpawner.enabled = false;
+        enemySpawner.gameObject.SetActive(false);
         soundTrack.Stop();
+        gameOverScreen.SetActive(true);
         
         // 
         // foreach (enemy in enemies) {enemy.enable = false;}
