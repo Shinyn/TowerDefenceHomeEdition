@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TowerBaseController : MonoBehaviour
 {
@@ -25,19 +26,25 @@ public class TowerBaseController : MonoBehaviour
     public TowerChoiceController tcc1;
     public TowerChoiceController tcc2;
     public TowerChoiceController tcc3;
+    public UpgradeController upgradeController;
+    public SellController sellController;
+    public TextMeshPro upgradeCostText;
+    public TextMeshPro sellValueText;
 
     // Tower variables
-    bool towerChosen = false;
+    public bool towerChosen = false;
     private bool showingTowers;
     string currentTower;
-    bool maxLevelTower = false;
-    int upgradePrice;
-    int towerLevel = 0;
+    public bool maxLevelTower = false;
+    public int upgradePrice;
+    public int towerLevel = 0;
     [SerializeField]
     int towerValue = 0;
+    bool upgradeAndSellEnabled = false;
 
     void Start()
     {
+        DisableUpgradeAndSell();
         InvokeRepeating("UpdateTarget", 0, repeatRate);
         lastTimeFired = Time.time;
         DisableTowerChoice();
@@ -72,16 +79,37 @@ public class TowerBaseController : MonoBehaviour
 
     }
 
-    private void SellTower() { // Gör ett eget lager för sell, upgrade och base tower
+    public void SellTower() { // Gör ett eget lager för sell, upgrade och base tower
         int cashBack = Mathf.RoundToInt(towerValue * 0.9f); // GLÖMDE ETT F!!! :@
         gameManager.AddGold(cashBack);
+        DisableUpgradeAndSell();
         towerChosen = false;
         detectRadius = 0;
         BulletDamage(0, 0);
         towerLevel = 0;
         towerValue = 0;
+        maxLevelTower = false;
         baseColor.color = Color.white;
         // Disabla torn specialiteter om dom har några
+    }
+
+    public void DisableUpgradeAndSell()
+    {
+        upgradeController.gameObject.SetActive(false);
+        sellController.gameObject.SetActive(false);
+    }
+
+    public void EnableUpgradeAndSell()
+    {
+        upgradeController.gameObject.SetActive(true);
+        sellController.gameObject.SetActive(true);
+    }
+
+    public void UpdateCostAndValue()
+    {
+        upgradeCostText.text = upgradePrice.ToString();
+        int valueOfTower = Mathf.RoundToInt(towerValue * 0.9f);
+        sellValueText.text = valueOfTower.ToString();
     }
 
     private void OnMouseDown()
@@ -95,6 +123,17 @@ public class TowerBaseController : MonoBehaviour
                 EnableTowerChoice();
         }
 
+        if (towerChosen && upgradeAndSellEnabled == false)
+        {
+            EnableUpgradeAndSell();
+            upgradeAndSellEnabled = true;
+        }
+        else if (towerChosen && upgradeAndSellEnabled == true)
+        {
+            DisableUpgradeAndSell();
+            upgradeAndSellEnabled = false;
+        }
+        /*
         if (towerChosen == true && maxLevelTower == false)
         {
             
@@ -106,12 +145,10 @@ public class TowerBaseController : MonoBehaviour
                 //Debug.Log("now towerLevel is: " + towerLevel);
                 if (towerLevel == 4)
                     maxLevelTower = true;
-                UpgradeTower();
-                gameManager.RemoveGold(upgradePrice);
                 // ta bort guld kostnaden
             }
             // möjlighet att kolla uppgradering innan val?
-        }
+        } */
     }
 
     private void Update()
@@ -168,7 +205,7 @@ public class TowerBaseController : MonoBehaviour
         bulletController.damage = Random.Range(minDmg, maxDmg);
     }
 
-    private void UpgradeTower()
+    public void UpgradeTower()
     {
         if (currentTower == "ArcherTower")
         {
@@ -331,6 +368,7 @@ public class TowerBaseController : MonoBehaviour
             Debug.Log("tcc3 value: " + tcc3.price);
         }
         towerChosen = true;
+        UpdateCostAndValue();
         towerLevel++;
         DisableTowerChoice();
     }

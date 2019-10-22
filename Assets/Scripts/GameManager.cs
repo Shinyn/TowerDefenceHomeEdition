@@ -5,7 +5,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    int lives;
+    public int lives;
     public int gold;
     public TextMeshPro livesText;
     public TextMeshPro goldText;
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
         gameOver = audioClips[3];
         soundTrack.Play();
         lives = 20;
-        gold = 3000;
+        gold = 1000;
         livesText.text = lives.ToString();
     }
 

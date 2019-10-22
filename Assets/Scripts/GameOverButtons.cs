@@ -1,0 +1,28 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class GameOverButtons : MonoBehaviour
+{
+    public GameObject restartButton;
+    public GameObject quitButton;
+
+    string mainScene = "Main";
+
+    private void OnMouseDown()
+    {
+        if (restartButton)
+        {
+            Debug.Log("Restart");
+            SceneManager.LoadScene(mainScene);
+        }
+        else 
+
+        if (quitButton)
+        {
+            Debug.Log("quit");
+            // Antingen stäng av appen eller gå till menyn
+        }
+    }
+}
