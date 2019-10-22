@@ -331,10 +331,8 @@ public class TowerBaseController : MonoBehaviour
             Debug.Log("tcc3 value: " + tcc3.price);
         }
         towerChosen = true;
-        //towerValue = tcc.price;
         towerLevel++;
         DisableTowerChoice();
-        //Debug.Log("tower level: " + towerLevel);
     }
 
     
@@ -344,6 +342,7 @@ public class TowerBaseController : MonoBehaviour
         if (hit != null && hit.tag == "Enemy")
         {
             detectedEnemy = true; // Bra ställe att lägga en dot för något torn :D
+            // enemyController.LooseHP(dotDamage); varje 0.2 sekunder eller så
         }
         else
         {

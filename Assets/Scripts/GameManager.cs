@@ -9,9 +9,20 @@ public class GameManager : MonoBehaviour
     public int gold;
     public TextMeshPro livesText;
     public TextMeshPro goldText;
+    AudioSource soundTrack;
+    AudioSource lifeLost;
+    AudioSource goblinDeath;
+    AudioSource gameOver;
+    public EnemySpawner enemySpawner;
 
     private void Start()
     {
+        AudioSource[] audioClips = GetComponents<AudioSource>();
+        soundTrack = audioClips[0];
+        lifeLost = audioClips[1];
+        goblinDeath = audioClips[2];
+        gameOver = audioClips[3];
+        soundTrack.Play();
         lives = 20;
         gold = 3000;
         livesText.text = lives.ToString();
@@ -21,17 +32,20 @@ public class GameManager : MonoBehaviour
     {
         EnemyController.enemyEscaped += RemoveLife;
         EnemyController.enemyKilled += AddGold;
+        EnemyController.enemyDeathSound += EnemyDeathSound;
     }
 
     private void OnDisable()
     {
         EnemyController.enemyEscaped -= RemoveLife;
         EnemyController.enemyKilled -= AddGold;
+        EnemyController.enemyDeathSound -= EnemyDeathSound;
     }
 
     public void RemoveLife(int life)
     {
         lives -= life;
+        lifeLost.Play();
         livesText.text = lives.ToString();
         if (lives <= 0)
         {
@@ -51,9 +65,19 @@ public class GameManager : MonoBehaviour
         goldText.text = gold.ToString();
     }
 
+    public void EnemyDeathSound()
+    {
+        goblinDeath.Play();
+    }
+
     public void GameOver()
     {
-        Debug.Log("Game Over!");
+        gameOver.Play();
+        enemySpawner.enabled = false;
+        soundTrack.Stop();
+        
+        // 
+        // foreach (enemy in enemies) {enemy.enable = false;}
         // visa gameOver screen
         // disable spawner
     }

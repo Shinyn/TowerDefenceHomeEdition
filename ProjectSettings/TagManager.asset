@@ -11,6 +11,7 @@ TagManager:
   - MageTower
   - BallistaTower
   - CannonTower
+  - LostLifeAudio
   layers:
   - Default
   - TransparentFX

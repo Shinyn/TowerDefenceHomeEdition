@@ -29,9 +29,9 @@ public class EnemyController : MonoBehaviour
     public delegate void EnemyKilled(int goldgained);
     public static event EnemyKilled enemyKilled;
 
-    /*
-     Behöver reference till image hp, visa den när fienden blir attackerad första gången
-         */
+    public delegate void EnemyDeathSound();
+    public static event EnemyDeathSound enemyDeathSound;
+
     private void Start()
     {
         healthbar.enabled = false;
@@ -58,6 +58,8 @@ public class EnemyController : MonoBehaviour
     {
         if (madeItToExit == true && Time.time > time + timeCheckDelay)
         {
+
+            
             enemyEscaped?.Invoke(lifeCost);
             healthbar.enabled = false;
             hpBackground.enabled = false;
@@ -68,6 +70,7 @@ public class EnemyController : MonoBehaviour
         if (dead == true && Time.time > time + timeCheckDelay)
         {
             enemyKilled?.Invoke(goldValue);
+            enemyDeathSound?.Invoke();
             gameObject.SetActive(false);
             dead = false;
             time = Time.time;
