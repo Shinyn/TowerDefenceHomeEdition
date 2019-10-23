@@ -44,7 +44,6 @@ public class PathController : MonoBehaviour
 
             else if (nextPathPoint == 14)
             {
-                gameObject.SetActive(false);
                 EnemyController enemyController = gameObject.GetComponent<EnemyController>();
                 enemyController.madeItToExit = true;
             }

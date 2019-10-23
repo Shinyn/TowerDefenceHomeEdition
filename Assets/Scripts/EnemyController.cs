@@ -14,8 +14,7 @@ public class EnemyController : MonoBehaviour
     [Header("Other")]
     public GameObject goalPost;
     public bool madeItToExit = false;
-    SpriteRenderer sprite;
-    float time;
+    SpriteRenderer sprite; // Ha för att byta sprite beroende på riktning?
     float timeCheckDelay = 0.1f;
     bool dead = false;
     public int startHp;
@@ -36,7 +35,6 @@ public class EnemyController : MonoBehaviour
     {
         healthbar.enabled = false;
         hpBackground.enabled = false;
-        time = Time.time;
         sprite = gameObject.GetComponent<SpriteRenderer>();
     }
 
@@ -56,24 +54,21 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        if (madeItToExit == true && Time.time > time + timeCheckDelay)
+        if (madeItToExit == true)
         {
-
-            
             enemyEscaped?.Invoke(lifeCost);
             healthbar.enabled = false;
             hpBackground.enabled = false;
             madeItToExit = false;
-            time = Time.time;
+            gameObject.SetActive(false);
         }
 
-        if (dead == true && Time.time > time + timeCheckDelay)
+        if (dead == true)
         {
             enemyKilled?.Invoke(goldValue);
             enemyDeathSound?.Invoke();
             gameObject.SetActive(false);
             dead = false;
-            time = Time.time;
         }
     }
 
@@ -85,7 +80,6 @@ public class EnemyController : MonoBehaviour
     private float ChangeHpBar()
     {
         float result = (float)hp / startHp; // Behövde casta till en float
-        Debug.Log("result: " + result);
         return result;
     }
 

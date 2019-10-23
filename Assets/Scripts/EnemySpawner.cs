@@ -22,11 +22,6 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(SpawnEnemy());
     }
 
-    private void Update()
-    {
-        
-    }
-
     private void AddEnemiesToPool()
     {
         for (int i = 0; i < enemyPoolSize; i++)

@@ -31,6 +31,12 @@ public class TowerBaseController : MonoBehaviour
     public TextMeshPro upgradeCostText;
     public TextMeshPro sellValueText;
 
+    // Tower bullet Sounds
+    AudioSource mageSound;
+    AudioSource cannonSound;
+    AudioSource ballistaSound;
+    AudioSource archerSound;
+
     // Tower variables
     public bool towerChosen = false;
     private bool showingTowers;
@@ -335,7 +341,7 @@ public class TowerBaseController : MonoBehaviour
             currentTower = selectedTower.tag;
             upgradePrice = 110;
             towerValue = tcc.price;
-            Debug.Log("tcc value: " + tcc.price);
+            //Debug.Log("tcc value: " + tcc.price);
         }
         else if (selectedTower.tag == "MageTower")
         {
@@ -345,7 +351,7 @@ public class TowerBaseController : MonoBehaviour
             currentTower = selectedTower.tag;
             upgradePrice = 144;
             towerValue = tcc1.price;
-            Debug.Log("tcc1 value: " + tcc1.price);
+            //Debug.Log("tcc1 value: " + tcc1.price);
         }
         else if (selectedTower.tag == "BallistaTower")
         {
@@ -355,7 +361,7 @@ public class TowerBaseController : MonoBehaviour
             currentTower = selectedTower.tag;
             upgradePrice = 110;
             towerValue = tcc2.price;
-            Debug.Log("tcc2 value: " + tcc2.price);
+            //Debug.Log("tcc2 value: " + tcc2.price);
         }
         else if (selectedTower.tag == "CannonTower")
         {
@@ -365,7 +371,7 @@ public class TowerBaseController : MonoBehaviour
             currentTower = selectedTower.tag;
             upgradePrice = 198;
             towerValue = tcc3.price;
-            Debug.Log("tcc3 value: " + tcc3.price);
+            //Debug.Log("tcc3 value: " + tcc3.price);
         }
         towerChosen = true;
         UpdateCostAndValue();
@@ -397,6 +403,7 @@ public class TowerBaseController : MonoBehaviour
         switch (currentTower)
         {
             case "ArcherTower":
+                // Sätt in ljud här
                 switch (towerLevel)
                 {
                     case 1:

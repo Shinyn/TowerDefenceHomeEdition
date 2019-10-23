@@ -76,12 +76,20 @@ public class GameManager : MonoBehaviour
     {
         gameOver.Play();
         enemySpawner.gameObject.SetActive(false);
+        DisableEnemies();
         soundTrack.Stop();
         gameOverScreen.SetActive(true);
         
         // 
         // foreach (enemy in enemies) {enemy.enable = false;}
-        // visa gameOver screen
-        // disable spawner
+    }
+
+    private void DisableEnemies()
+    {
+        EnemyController[] enemies = FindObjectsOfType<EnemyController>();
+        foreach (EnemyController enemy in enemies)
+        {
+            enemy.gameObject.SetActive(false);
+        }
     }
 }
