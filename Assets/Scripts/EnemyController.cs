@@ -51,7 +51,6 @@ public class EnemyController : MonoBehaviour
         neverUsed = false;
     }
 
-
     private void Update()
     {
         if (madeItToExit == true)

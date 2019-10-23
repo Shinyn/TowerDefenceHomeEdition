@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 141809111}
   - component: {fileID: 141809110}
   - component: {fileID: 141809109}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TowerCostText (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -741,7 +741,7 @@ GameObject:
   - component: {fileID: 386847911}
   - component: {fileID: 386847913}
   - component: {fileID: 386847912}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: UpgradeTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1109,7 +1109,7 @@ GameObject:
   - component: {fileID: 518012039}
   - component: {fileID: 518012038}
   - component: {fileID: 518012037}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TowerCostText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1449,7 +1449,7 @@ GameObject:
   - component: {fileID: 775920306}
   - component: {fileID: 775920305}
   - component: {fileID: 775920304}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TowerCostText (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1855,7 +1855,7 @@ GameObject:
   - component: {fileID: 1006984808}
   - component: {fileID: 1006984807}
   - component: {fileID: 1006984806}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SellValueText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3148,7 +3148,7 @@ GameObject:
   - component: {fileID: 1695740550}
   - component: {fileID: 1695740551}
   - component: {fileID: 1695740552}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SellTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3474,7 +3474,7 @@ GameObject:
   - component: {fileID: 1823016788}
   - component: {fileID: 1823016787}
   - component: {fileID: 1823016786}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: UpgradeCostText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3704,7 +3704,7 @@ GameObject:
   - component: {fileID: 1884283821}
   - component: {fileID: 1884283820}
   - component: {fileID: 1884283819}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TowerCostText (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3937,19 +3937,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27834a0b9d0bc2d4ab20a0a38b908e75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 931875745280395879, guid: c3def3e7d56958b4cabd92d42aa4a5f5,
+  enemyPrefab: {fileID: 931875745280395879, guid: 651f997dcf10e314e8e713170d823d14,
     type: 3}
   enemyPrefab1: {fileID: 931875745280395879, guid: 51358c361b0dfd34a985dfd7d8f4c182,
     type: 3}
-  enemyPrefab2: {fileID: 931875745280395879, guid: ac0fad2f50ad6c3488be6b51a076d8ca,
+  enemyPrefab2: {fileID: 931875745280395879, guid: d6c39d9425c50ca4ba7f32e97ea038e8,
     type: 3}
-  enemyPrefab3: {fileID: 931875745280395879, guid: 2a8f8c4cd464d6b499817a99889c09cc,
+  enemyPrefab3: {fileID: 931875745280395879, guid: 36043c58b4de02a4da1512fc2f89a38e,
     type: 3}
-  enemyPrefab4: {fileID: 931875745280395879, guid: a906ee199d062684b98fbf1ee0d50705,
+  enemyPrefab4: {fileID: 931875745280395879, guid: ce1613672e5ba5f4ea24baf2dd29c221,
+    type: 3}
+  enemyPrefab5: {fileID: 931875745280395879, guid: b18a44a33545cbe4fb25014d48004779,
+    type: 3}
+  enemyPrefab6: {fileID: 931875745280395879, guid: 4c9b5c1ece2ee2546b2e66b57fc6e79e,
     type: 3}
   enemyController: {fileID: 0}
   delay: 1.5
+  waveCounter: 0
   enemyPool: []
+  goblinPool: []
+  orcPool: []
+  ogrePool: []
+  ghostPool: []
+  destroyerPool: []
+  reaperPool: []
 --- !u!1 &1932684408
 GameObject:
   m_ObjectHideFlags: 0
@@ -4447,17 +4458,17 @@ PrefabInstance:
     - target: {fileID: 1013629177671468421, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.38
+      value: 1.34
       objectReference: {fileID: 0}
     - target: {fileID: 1013629177671468421, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.6
+      value: 1.42
       objectReference: {fileID: 0}
     - target: {fileID: 1013629177671468421, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1013629177671468421, guid: cc3fbeb428d3aa143a0d4e95f89c1196,
         type: 3}

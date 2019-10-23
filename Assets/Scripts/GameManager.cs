@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
 
     public void EnemyDeathSound()
     {
-        goblinDeath.Play();
+        goblinDeath.Play(); // Skapa deathSounds i kod och lägg dom i en lista så dom inte avbryter varandra om fler dör samtidigt
     }
 
     public void GameOver()
@@ -79,9 +79,6 @@ public class GameManager : MonoBehaviour
         DisableEnemies();
         soundTrack.Stop();
         gameOverScreen.SetActive(true);
-        
-        // 
-        // foreach (enemy in enemies) {enemy.enable = false;}
     }
 
     private void DisableEnemies()

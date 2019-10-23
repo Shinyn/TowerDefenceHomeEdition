@@ -12,8 +12,6 @@ public class PathController : MonoBehaviour
     Transform pathPoints;
     int nextPathPoint;
     
-
-    // Start is called before the first frame update
     void Start()
     {
         if (pathPoints == null)
@@ -28,7 +26,6 @@ public class PathController : MonoBehaviour
         nextPathPoint = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
         Vector2 current = transform.position;
