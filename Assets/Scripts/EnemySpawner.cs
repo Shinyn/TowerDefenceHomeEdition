@@ -14,7 +14,7 @@ public class EnemySpawner : MonoBehaviour
     public EnemyController enemyController; // behövs för att säga vilket guldvärde fienden har 
     public float delay = 1.0f;
     [SerializeField]
-    int waveCounter = 0;
+    int waveCounter;
 
     public List<Rigidbody2D> enemyPool = new List<Rigidbody2D>();
     public List<Rigidbody2D> goblinPool = new List<Rigidbody2D>();
@@ -37,88 +37,37 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
+        waveCounter = 1;
         AddEnemiesToPool();
         StartCoroutine(SpawnEnemy());
     }
 
-    private void AddEnemiesToPool() // Göra en pool per fiendetyp?
+    void AddAllEnemies(int poolSize, GameObject prefab, List<Rigidbody2D> actualPool)
     {
-        for (int i = 0; i < enemyPoolSize; i++) // Instansiera alla fiende pooler här
+        for (int i = 0; i < poolSize; i++)
         {
-            GameObject enemy = Instantiate(enemyPrefab1);
+            GameObject enemy = Instantiate(prefab);
             enemy.SetActive(false);
 
             Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
-            enemyPool.Add(rb);
-        }
-
-        for (int i = 0; i < goblinPoolSize; i++) // Instansiera alla fiende pooler här
-        {
-            GameObject enemy = Instantiate(enemyPrefab); // sätt i inspektorn
-            enemy.SetActive(false);
-
-            Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
-            goblinPool.Add(rb);
-        }
-
-        for (int i = 0; i < orcPoolSize; i++) // Instansiera alla fiende pooler här
-        {
-            GameObject enemy = Instantiate(enemyPrefab2); // sätt i inspektorn
-            enemy.SetActive(false);
-
-            Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
-            orcPool.Add(rb);
-        }
-
-        for (int i = 0; i < ogrePoolSize; i++) // Instansiera alla fiende pooler här
-        {
-            GameObject enemy = Instantiate(enemyPrefab3); // sätt i inspektorn
-            enemy.SetActive(false);
-
-            Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
-            ogrePool.Add(rb);
-        }
-
-        for (int i = 0; i < ghostPoolSize; i++) // Instansiera alla fiende pooler här
-        {
-            GameObject enemy = Instantiate(enemyPrefab4); // sätt i inspektorn
-            enemy.SetActive(false);
-
-            Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
-            ghostPool.Add(rb);
-        }
-
-        for (int i = 0; i < destroyerPoolSize; i++) // Instansiera alla fiende pooler här
-        {
-            GameObject enemy = Instantiate(enemyPrefab5); // sätt i inspektorn
-            enemy.SetActive(false);
-
-            Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
-            destroyerPool.Add(rb);
-        }
-
-        for (int i = 0; i < reaperPoolSize; i++) // Instansiera alla fiende pooler här
-        {
-            GameObject enemy = Instantiate(enemyPrefab6); // sätt i inspektorn
-            enemy.SetActive(false);
-
-            Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
-            reaperPool.Add(rb);
+            actualPool.Add(rb);
         }
     }
 
-    Rigidbody2D GetEnemy()
+    private void AddEnemiesToPool()
     {
-        foreach(Rigidbody2D enemy in enemyPool) // Hämta alla fiender här
-        {
-            if (!enemy.gameObject.activeInHierarchy)
-            {
-                enemy.gameObject.SetActive(true);
-                return enemy;
-            }
-        }
+        AddAllEnemies(enemyPoolSize, enemyPrefab1, enemyPool);
+        AddAllEnemies(goblinPoolSize, enemyPrefab, goblinPool);
+        AddAllEnemies(orcPoolSize, enemyPrefab2, orcPool);
+        AddAllEnemies(ogrePoolSize, enemyPrefab3, ogrePool);
+        AddAllEnemies(ghostPoolSize, enemyPrefab4, ghostPool);
+        AddAllEnemies(destroyerPoolSize, enemyPrefab5, destroyerPool);
+        AddAllEnemies(reaperPoolSize, enemyPrefab6, reaperPool);
+    }
 
-        foreach (Rigidbody2D enemy in goblinPool) // Hämta alla fiender här
+    Rigidbody2D GetEnemy(List<Rigidbody2D> theEnemyPool)
+    {
+        foreach (Rigidbody2D enemy in theEnemyPool)
         {
             if (!enemy.gameObject.activeInHierarchy)
             {
@@ -126,51 +75,72 @@ public class EnemySpawner : MonoBehaviour
                 return enemy;
             }
         }
+        return null;
+    }
 
-        foreach (Rigidbody2D enemy in orcPool) // Hämta alla fiender här
+    private Rigidbody2D EnemyToGet()
+    {
+        Debug.Log("enemyToGet & wavecount: " + waveCounter);
+        switch (waveCounter)
         {
-            if (!enemy.gameObject.activeInHierarchy)
-            {
-                enemy.gameObject.SetActive(true);
-                return enemy;
-            }
+            case 1:
+                Debug.Log("wave 1");
+                // Spawna våg 1
+                for (int i = 0; i < 20; i++)
+                {
+                    return GetEnemy(enemyPool);
+                }
+                waveCounter++;
+                break;
+            case 2:
+                // våg 2
+                for (int i = 0; i < 20; i++)
+                {
+                    return GetEnemy(goblinPool);
+                }
+                break;
+            case 3:
+                // våg 3
+                for (int i = 0; i < 20; i++)
+                {
+                    return GetEnemy(orcPool);
+                }
+                break;
+            case 4:
+                // våg 4
+                for (int i = 0; i < 20; i++)
+                {
+                    return GetEnemy(ogrePool);
+                }
+                break;
+            case 5:
+                // våg 5
+                for (int i = 0; i < 20; i++)
+                {
+                    return GetEnemy(ghostPool);
+                }
+                break;
+            case 6:
+                // våg 6
+                for (int i = 0; i < 20; i++)
+                {
+                    return GetEnemy(destroyerPool);
+                }
+                break;
+            case 7:
+                // våg 7
+                for (int i = 0; i < 20; i++)
+                {
+                    return GetEnemy(reaperPool);
+                }
+                Debug.Log("waveCount is now 0");
+                waveCounter = 0;
+                break;
         }
+        Debug.Log("will return null now");
+        return null;
+    }
 
-        foreach (Rigidbody2D enemy in ogrePool) // Hämta alla fiender här
-        {
-            if (!enemy.gameObject.activeInHierarchy)
-            {
-                enemy.gameObject.SetActive(true);
-                return enemy;
-            }
-        }
-
-        foreach (Rigidbody2D enemy in ghostPool) // Hämta alla fiender här
-        {
-            if (!enemy.gameObject.activeInHierarchy)
-            {
-                enemy.gameObject.SetActive(true);
-                return enemy;
-            }
-        }
-
-        foreach (Rigidbody2D enemy in destroyerPool) // Hämta alla fiender här
-        {
-            if (!enemy.gameObject.activeInHierarchy)
-            {
-                enemy.gameObject.SetActive(true);
-                return enemy;
-            }
-        }
-
-        foreach (Rigidbody2D enemy in reaperPool) // Hämta alla fiender här
-        {
-            if (!enemy.gameObject.activeInHierarchy)
-            {
-                enemy.gameObject.SetActive(true);
-                return enemy;
-            }
-        }
         /*
         if (expandableEnemyPool)
         {
@@ -180,46 +150,17 @@ public class EnemySpawner : MonoBehaviour
             enemy.SetActive(true);
             return rb;
         } */
-        return null;
-    }
 
     IEnumerator SpawnEnemy() // Spawna fiender beroende på våg
     {
         while (true) // Behöver pausas mellan waves --- Behöver 1 spawner per fiendetyp?
         {
-            Rigidbody2D rb = GetEnemy();
+            Rigidbody2D rb = EnemyToGet();
             if (rb != null)
             {
                 rb.transform.position = transform.position;
             }
             yield return new WaitForSeconds(delay);
         }
-       
-    }
-
-    public void WaveSpawner()
-    {
-        // Behöver göra en waveCounter
-        // om t.ex wave 12 körs så ska den instansiera 20x goblin, 12x ghosts, 3x hulks och 1x warmonger
-        waveCounter++;
-        switch (waveCounter)
-        {
-            case 1:
-                // Spawna våg 1
-                EnemiesToInstansiate();
-                break;
-            case 2:
-                // våg 2
-                break;
-            case 3:
-                // våg 3
-                break;
-        }
-    }
-    
-    public int EnemiesToInstansiate()
-    {
-        int enemiesCount = 20;
-        return enemiesCount;
     }
 }
