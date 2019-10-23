@@ -31,6 +31,8 @@ public class TowerBaseController : MonoBehaviour
     public TextMeshPro upgradeCostText;
     public TextMeshPro sellValueText;
 
+    AudioSource constructionSound;
+
     // Tower bullet Sounds
     AudioSource mageSound;
     AudioSource cannonSound;
@@ -50,12 +52,17 @@ public class TowerBaseController : MonoBehaviour
 
     void Start()
     {
+        AudioSource[] audioClips = GetComponents<AudioSource>();
+        mageSound = audioClips[0];
+        cannonSound = audioClips[1];
+        ballistaSound = audioClips[2];
+        archerSound = audioClips[3];
+        constructionSound = audioClips[4];
         DisableUpgradeAndSell();
         InvokeRepeating("UpdateTarget", 0, repeatRate);
         lastTimeFired = Time.time;
         DisableTowerChoice();
         baseColor = gameObject.GetComponent<SpriteRenderer>();
-        //tcc = gameObject.GetComponentInChildren<TowerChoiceController>(); // Har 4 tcc så den vet inte vilken den ska ta och blir null?
     }
 
     void UpdateTarget()
@@ -80,7 +87,7 @@ public class TowerBaseController : MonoBehaviour
 
         if (nearestEnemy != null && shortestDistance <= detectRadius)
         {
-            target = nearestEnemy.transform;
+            target = nearestEnemy.transform; // Kanske ge den en "first" tag så det targetar den första istället för den närmaste?
         }
 
     }
@@ -103,6 +110,11 @@ public class TowerBaseController : MonoBehaviour
     {
         upgradeController.gameObject.SetActive(false);
         sellController.gameObject.SetActive(false);
+    }
+
+    public void DisableUpgrade()
+    {
+        upgradeController.gameObject.SetActive(false);
     }
 
     public void EnableUpgradeAndSell()
@@ -239,6 +251,7 @@ public class TowerBaseController : MonoBehaviour
                     fireRate = 3f;
                     detectRadius = 3f;
                     towerValue += upgradePrice;
+                    DisableUpgrade();
                     break;
             }
         }
@@ -268,6 +281,7 @@ public class TowerBaseController : MonoBehaviour
                     fireRate = 1.8f;
                     detectRadius = 2.5f;
                     towerValue += upgradePrice;
+                    DisableUpgrade();
                     break;
             }
         }
@@ -297,6 +311,7 @@ public class TowerBaseController : MonoBehaviour
                     fireRate = 2f;
                     detectRadius = 2.5f;
                     towerValue += upgradePrice;
+                    DisableUpgrade();
                     break;
             }
         }
@@ -324,6 +339,7 @@ public class TowerBaseController : MonoBehaviour
                     fireRate = 2f;
                     detectRadius = 2.5f;
                     towerValue += upgradePrice;
+                    DisableUpgrade();
                     break;
             }
         }
@@ -333,6 +349,7 @@ public class TowerBaseController : MonoBehaviour
     public void ChangeToTowerSelected(GameObject selectedTower)
     {
         baseColor.color = selectedTower.GetComponent<SpriteRenderer>().color;
+        constructionSound.Play();
         if (selectedTower.tag == "ArcherTower")
         {
             BulletDamage(4, 7);
@@ -404,6 +421,7 @@ public class TowerBaseController : MonoBehaviour
         {
             case "ArcherTower":
                 // Sätt in ljud här
+                archerSound.Play();
                 switch (towerLevel)
                 {
                     case 1:
@@ -421,6 +439,7 @@ public class TowerBaseController : MonoBehaviour
                 }
                 break;
             case "MageTower":
+                mageSound.Play();
                 switch (towerLevel)
                 {
                     case 1:
@@ -438,6 +457,7 @@ public class TowerBaseController : MonoBehaviour
                 }
                 break;
             case "BallistaTower":
+                ballistaSound.Play();
                 switch (towerLevel)
                 {
                     case 1:
@@ -455,6 +475,7 @@ public class TowerBaseController : MonoBehaviour
                 }
                 break;
             case "CannonTower":
+                cannonSound.Play();
                 switch (towerLevel)
                 {
                     case 1:

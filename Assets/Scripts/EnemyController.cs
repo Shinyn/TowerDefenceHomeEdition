@@ -28,7 +28,7 @@ public class EnemyController : MonoBehaviour
     public delegate void EnemyKilled(int goldgained);
     public static event EnemyKilled enemyKilled;
 
-    public delegate void EnemyDeathSound();
+    public delegate void EnemyDeathSound(string enemyName);
     public static event EnemyDeathSound enemyDeathSound;
 
     private void Start()
@@ -65,15 +65,10 @@ public class EnemyController : MonoBehaviour
         if (dead == true)
         {
             enemyKilled?.Invoke(goldValue);
-            enemyDeathSound?.Invoke();
+            enemyDeathSound?.Invoke(name);
             gameObject.SetActive(false);
             dead = false;
         }
-    }
-
-    public void ChangeGoldvalue(int gold)
-    {
-        goldValue = gold; // Använd tags, gör ett underobject med en tag och targeta sen parent
     }
 
     private float ChangeHpBar()
@@ -91,6 +86,7 @@ public class EnemyController : MonoBehaviour
         if (hp <= 0)
         {
             dead = true;
+            Debug.Log(name + " died");
             healthbar.enabled = false;
             hpBackground.enabled = false;
         }

@@ -24,6 +24,14 @@ public class EnemySpawner : MonoBehaviour
     public List<Rigidbody2D> destroyerPool = new List<Rigidbody2D>();
     public List<Rigidbody2D> reaperPool = new List<Rigidbody2D>();
 
+    int internalCount1 = 0;
+    int internalCount2 = 0;
+    int internalCount3 = 0;
+    int internalCount4 = 0;
+    int internalCount5 = 0;
+    int internalCount6 = 0;
+    int internalCount7 = 0;
+
     int enemyPoolSize = 50;
 
     // Ha olika pooler för olika fiender
@@ -77,7 +85,7 @@ public class EnemySpawner : MonoBehaviour
         }
         return null;
     }
-
+    
     private Rigidbody2D EnemyToGet()
     {
         Debug.Log("enemyToGet & wavecount: " + waveCounter);
@@ -86,55 +94,77 @@ public class EnemySpawner : MonoBehaviour
             case 1:
                 Debug.Log("wave 1");
                 // Spawna våg 1
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 2; i++)
                 {
+                    
+                    internalCount1++;
+                    Debug.Log("internalCount: " + internalCount1);
+                    if (internalCount1 >= 2)
+                        waveCounter++;
                     return GetEnemy(enemyPool);
                 }
-                waveCounter++;
                 break;
             case 2:
+                Debug.Log("wave 2");
                 // våg 2
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 2; i++)
                 {
-                    return GetEnemy(goblinPool);
+                    internalCount2++;
+                    if (internalCount2 >= 2)
+                        waveCounter++;
+                     return GetEnemy(goblinPool);
                 }
                 break;
             case 3:
                 // våg 3
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 2; i++)
                 {
+                    internalCount3++;
+                    if (internalCount3 >= 2)
+                        waveCounter++;
                     return GetEnemy(orcPool);
                 }
                 break;
             case 4:
                 // våg 4
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 2; i++)
                 {
+                    internalCount4++;
+                    if (internalCount4 >= 2)
+                        waveCounter++;
                     return GetEnemy(ogrePool);
                 }
                 break;
             case 5:
                 // våg 5
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 2; i++)
                 {
+                    internalCount5++;
+                    if (internalCount5 >= 2)
+                        waveCounter++;
                     return GetEnemy(ghostPool);
                 }
                 break;
             case 6:
                 // våg 6
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 2; i++)
                 {
+                    internalCount6++;
+                    if (internalCount6 >= 2)
+                        waveCounter++;
                     return GetEnemy(destroyerPool);
                 }
                 break;
             case 7:
                 // våg 7
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 2; i++)
                 {
+                    internalCount7++;
+                    if (internalCount7 >= 2)
+                        waveCounter = 1;
                     return GetEnemy(reaperPool);
                 }
                 Debug.Log("waveCount is now 0");
-                waveCounter = 0;
                 break;
         }
         Debug.Log("will return null now");
