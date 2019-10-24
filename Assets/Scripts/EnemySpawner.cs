@@ -92,11 +92,10 @@ public class EnemySpawner : MonoBehaviour
         switch (waveCounter)
         {
             case 1:
-                Debug.Log("wave 1");
+                Debug.Log("wave 1"); // Peta in nåt annat krav för att spawna olika monsters i samma våg
                 // Spawna våg 1
                 for (int i = 0; i < 2; i++)
                 {
-                    
                     internalCount1++;
                     Debug.Log("internalCount: " + internalCount1);
                     if (internalCount1 >= 2)
