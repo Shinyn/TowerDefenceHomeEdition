@@ -36,10 +36,10 @@ public class PathController : MonoBehaviour
         }
         else
         {
-            if (nextPathPoint < 14)
+            if (nextPathPoint < 18)
                 nextPathPoint++;
 
-            else if (nextPathPoint == 14)
+            else if (nextPathPoint == 18)
             {
                 EnemyController enemyController = gameObject.GetComponent<EnemyController>();
                 enemyController.madeItToExit = true;
