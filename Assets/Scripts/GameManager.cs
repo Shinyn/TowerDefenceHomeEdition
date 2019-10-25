@@ -11,17 +11,10 @@ public class GameManager : MonoBehaviour
     public TextMeshPro goldText;
     [HideInInspector]
     public AudioSource soundTrack;
-    AudioSource lifeLost;
-    AudioSource goblinDeath;
-    AudioSource gameOver;
-    AudioSource orcDeath;
-    AudioSource ogreDeath;
-    AudioSource ghostDeath;
-    AudioSource destroyerDeath;
-    AudioSource reaperDeath;
-    AudioSource draupnirDeath;
+    AudioSource lifeLost, goblinDeath, gameOver, orcDeath, ogreDeath, ghostDeath, destroyerDeath, reaperDeath, draupnirDeath;
     public EnemySpawner enemySpawner;
     public GameObject gameOverScreen;
+    public GameObject pausButton;
 
     private void Start()
     {
@@ -37,7 +30,7 @@ public class GameManager : MonoBehaviour
         destroyerDeath = audioClips[7];
         reaperDeath = audioClips[8];
         draupnirDeath = audioClips[9];
-        soundTrack.Play();
+        //soundTrack.Play();
         lives = 20;
         gold = 1000;
         livesText.text = lives.ToString();
@@ -112,6 +105,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         gameOver.Play();
+        pausButton.SetActive(false);
         enemySpawner.gameObject.SetActive(false);
         DisableEnemies();
         DisableTowers();

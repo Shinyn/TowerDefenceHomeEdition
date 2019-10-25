@@ -23,7 +23,6 @@ public class PauseController : MonoBehaviour
             ToggleTime();
             pauseMenu.gameObject.SetActive(false);
             pauseBtn.SetActive(true);
-
         }
     }
 

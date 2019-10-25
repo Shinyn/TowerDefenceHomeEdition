@@ -8,6 +8,8 @@ public class SoundController : MonoBehaviour
     bool soundOn = true;
     bool musicOn = true;
     public GameManager gameManager;
+    public GameObject xMarkerSound;
+    public GameObject xMarkerMusic;
 
     private void OnMouseDown()
     {
@@ -16,11 +18,13 @@ public class SoundController : MonoBehaviour
             if (musicOn)
             {
                 gameManager.soundTrack.Pause();
+                xMarkerMusic.SetActive(true);
                 musicOn = false;
             }
             else if (!musicOn)
             {
                 gameManager.soundTrack.UnPause();
+                xMarkerMusic.SetActive(false);
                 musicOn = true;
             }
         }
@@ -28,14 +32,27 @@ public class SoundController : MonoBehaviour
         {
             if (soundOn)
             {
-                AudioListener.volume = 0f;
+                ChangeAudio(0);
+                gameManager.soundTrack.volume = 0.2f;
+                xMarkerSound.SetActive(true);
                 soundOn = false;
             }
             else if (!soundOn)
             {
-                AudioListener.volume = 1f;
+                ChangeAudio(1);
+                gameManager.soundTrack.volume = 0.2f;
+                xMarkerSound.SetActive(false);
                 soundOn = true;
             }
+        }
+    }
+
+    private void ChangeAudio(float volume)
+    {
+        AudioSource[] audioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+        foreach (AudioSource audio in audioSources)
+        {
+            audio.volume = volume;
         }
     }
 }
