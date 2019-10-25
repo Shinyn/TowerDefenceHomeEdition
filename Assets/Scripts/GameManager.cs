@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
     public int gold;
     public TextMeshPro livesText;
     public TextMeshPro goldText;
-    AudioSource soundTrack;
+    [HideInInspector]
+    public AudioSource soundTrack;
     AudioSource lifeLost;
     AudioSource goblinDeath;
     AudioSource gameOver;
