@@ -5,7 +5,7 @@ using UnityEngine;
 public class PathController : MonoBehaviour
 {
     [Header("Attributes")]
-    public float moveSpeed = 5f;
+    float moveSpeed = 1f;
 
     [Header("Other")]
     public GameObject pathPointsPrefab;
