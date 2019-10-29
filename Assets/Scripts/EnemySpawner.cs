@@ -394,7 +394,13 @@ public class EnemySpawner : MonoBehaviour
 
     private void Win()
     {
-        Debug.Log("YOU WON!");
+        EnemyController[] enemies = FindObjectsOfType<EnemyController>();
+        foreach (EnemyController enemy in enemies)
+        {
+            if (!enemy.isActiveAndEnabled)
+                Debug.Log("YOU WON!");
+        }
+        
         // Display score?
         // Play again button?
         // Enemies killed?

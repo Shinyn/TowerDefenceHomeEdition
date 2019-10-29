@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public TextMeshPro goldText;
     [HideInInspector]
     public AudioSource soundTrack;
-    AudioSource lifeLost, goblinDeath, gameOver, orcDeath, ogreDeath, ghostDeath, destroyerDeath, reaperDeath, draupnirDeath;
+    AudioSource lifeLost, goblinDeath, gameOver, orcDeath, ogreDeath, ghostDeath, destroyerDeath, reaperDeath, draupnirDeath, winSound;
     public EnemySpawner enemySpawner;
     public GameObject gameOverScreen;
     public GameObject pausButton;
@@ -111,6 +111,15 @@ public class GameManager : MonoBehaviour
         DisableTowers();
         soundTrack.Stop();
         gameOverScreen.SetActive(true);
+    }
+
+    public void Win()
+    {
+        // winSound.Play();
+        // pauseButton.SetActive(false);
+        // DisableTowers();
+        // soundTrack.Stop();
+        // winScreen.SetActive(true);
     }
 
     private void DisableEnemies()

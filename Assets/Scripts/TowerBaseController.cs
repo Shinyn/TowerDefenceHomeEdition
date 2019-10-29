@@ -38,6 +38,8 @@ public class TowerBaseController : MonoBehaviour
     AudioSource cannonSound;
     AudioSource ballistaSound;
     AudioSource archerSound;
+    AudioSource sellSound;
+    AudioSource upgradeSound;
 
     // Tower variables
     public bool towerChosen = false;
@@ -58,6 +60,8 @@ public class TowerBaseController : MonoBehaviour
         ballistaSound = audioClips[2];
         archerSound = audioClips[3];
         constructionSound = audioClips[4];
+        sellSound = audioClips[5];
+        upgradeSound = audioClips[6];
         DisableUpgradeAndSell();
         InvokeRepeating("UpdateTarget", 0, repeatRate);
         lastTimeFired = Time.time;
@@ -95,6 +99,7 @@ public class TowerBaseController : MonoBehaviour
     public void SellTower() { // Gör ett eget lager för sell, upgrade och base tower
         int cashBack = Mathf.RoundToInt(towerValue * 0.9f); // GLÖMDE ETT F!!! :@
         gameManager.AddGold(cashBack);
+        sellSound.Play();
         DisableUpgradeAndSell();
         towerChosen = false;
         detectRadius = 0;
@@ -225,6 +230,7 @@ public class TowerBaseController : MonoBehaviour
 
     public void UpgradeTower()
     {
+        upgradeSound.Play();
         if (currentTower == "ArcherTower")
         {
             switch (towerLevel)
