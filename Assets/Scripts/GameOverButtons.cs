@@ -17,12 +17,11 @@ public class GameOverButtons : MonoBehaviour
             Debug.Log("Restart");
             SceneManager.LoadScene(mainScene);
         }
-        else 
 
         if (quitButton)
         {
             Debug.Log("quit");
-            // Antingen stäng av appen eller gå till menyn
+            Application.Quit();
         }
     }
 }

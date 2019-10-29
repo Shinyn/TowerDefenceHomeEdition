@@ -36342,6 +36342,7 @@ GameObject:
   - component: {fileID: 1360226560}
   - component: {fileID: 1360226559}
   - component: {fileID: 1360226561}
+  - component: {fileID: 1360226562}
   m_Layer: 0
   m_Name: QuitButton
   m_TagString: Untagged
@@ -36429,6 +36430,18 @@ CircleCollider2D:
   m_Offset: {x: 0.000000059604645, y: 0.000000029802322}
   serializedVersion: 2
   m_Radius: 0.36999997
+--- !u!114 &1360226562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360226558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8af0f9c08c6ff664b8bab1b6f1602ce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1360945000
 GameObject:
   m_ObjectHideFlags: 0
@@ -53335,8 +53348,6 @@ MonoBehaviour:
     type: 3}
   enemyPrefab6: {fileID: 931875745280395879, guid: 4c9b5c1ece2ee2546b2e66b57fc6e79e,
     type: 3}
-  enemyController: {fileID: 0}
-  delay: 1.5
   waveCounter: 0
   enemyPool: []
   goblinPool: []
