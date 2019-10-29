@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         draupnirDeath = audioClips[9];
         //soundTrack.Play();
         lives = 20;
-        gold = 1000;
+        gold = 400;
         livesText.text = lives.ToString();
     }
 

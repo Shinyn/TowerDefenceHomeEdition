@@ -156,22 +156,22 @@ public class TowerBaseController : MonoBehaviour
             DisableUpgradeAndSell();
             upgradeAndSellEnabled = false;
         }
-        /*
+    }
+
+    public void Upgrade()
+    {
         if (towerChosen == true && maxLevelTower == false)
         {
-            
-            //Debug.Log("upgradePrice is: " + upgradePrice);
-            // Måste ha in goldCost Ovanför tornet och om man klickar så man ser kostnaden
             if (gameManager.gold >= upgradePrice)
             {
+                gameManager.RemoveGold(upgradePrice);
                 towerLevel++;
-                //Debug.Log("now towerLevel is: " + towerLevel);
+                UpgradeTower();
+                UpdateCostAndValue();
                 if (towerLevel == 4)
                     maxLevelTower = true;
-                // ta bort guld kostnaden
             }
-            // möjlighet att kolla uppgradering innan val?
-        } */
+        }
     }
 
     private void Update()
