@@ -15,10 +15,12 @@ public class GameManager : MonoBehaviour
     public EnemySpawner enemySpawner;
     public GameObject gameOverScreen;
     public GameObject pausButton;
+    public GameObject winScreen;
 
     private void Start()
     {
         gameOverScreen.SetActive(false);
+        winScreen.SetActive(false);
         AudioSource[] audioClips = GetComponents<AudioSource>();
         soundTrack = audioClips[0];
         lifeLost = audioClips[1];
@@ -30,6 +32,7 @@ public class GameManager : MonoBehaviour
         destroyerDeath = audioClips[7];
         reaperDeath = audioClips[8];
         draupnirDeath = audioClips[9];
+        winSound = audioClips[10];
         //soundTrack.Play();
         lives = 20;
         gold = 400;
@@ -115,11 +118,13 @@ public class GameManager : MonoBehaviour
 
     public void Win()
     {
-        // winSound.Play();
-        // pauseButton.SetActive(false);
-        // DisableTowers();
-        // soundTrack.Stop();
-        // winScreen.SetActive(true);
+        // Display score?
+        // Enemies killed?
+        pausButton.SetActive(false);
+        DisableTowers();
+        soundTrack.Stop();
+        winSound.Play();
+        winScreen.SetActive(true);
     }
 
     private void DisableEnemies()

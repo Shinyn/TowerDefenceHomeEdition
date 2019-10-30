@@ -29,7 +29,6 @@ public class BulletController : MonoBehaviour
         {
             EnemyController enemyTarget = target.gameObject.GetComponent<EnemyController>();
             enemyTarget.LooseHP(damage);
-            //Debug.Log("Dmg is: " + damage);
             Impact();
             return;
         }

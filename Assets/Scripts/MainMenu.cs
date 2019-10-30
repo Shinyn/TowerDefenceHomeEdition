@@ -28,7 +28,7 @@ public class MainMenu : MonoBehaviour
         }
         else if (creditsButton)
         {
-            // visa credits i guess
+            // visa credits för zapsplat.com och freesound.org (ljuden)
             Debug.Log("Credits");
         }
         else if (exitButton)

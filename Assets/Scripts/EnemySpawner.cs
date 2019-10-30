@@ -12,9 +12,9 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab5; // destroyer
     public GameObject enemyPrefab6; // reaper
     float delay = 0.5f;
+    public GameManager gameManager;
     [SerializeField]
     int waveCounter;
-    bool spawning = false;
 
     public List<Rigidbody2D> enemyPool = new List<Rigidbody2D>();
     public List<Rigidbody2D> goblinPool = new List<Rigidbody2D>();
@@ -24,17 +24,8 @@ public class EnemySpawner : MonoBehaviour
     public List<Rigidbody2D> destroyerPool = new List<Rigidbody2D>();
     public List<Rigidbody2D> reaperPool = new List<Rigidbody2D>();
 
-    int internalCount1 = 0;
-    int internalCount2 = 0;
-    int internalCount3 = 0;
-    int internalCount4 = 0;
-    int internalCount5 = 0;
-    int internalCount6 = 0;
-    int internalCount7 = 0;
-
-    int enemyPoolSize = 50;
-
     // Ha olika pooler för olika fiender
+    int enemyPoolSize = 50;
     int goblinPoolSize = 50;
     int orcPoolSize = 50;
     int ogrePoolSize = 50;
@@ -85,13 +76,6 @@ public class EnemySpawner : MonoBehaviour
         }
         return null;
     }
-
-    // spawning = true i start - SpawnWave i update - if spawning == true 
-    // waveCounter++ i start - 
-    // int wave = 0; wave++; i start.
-    // if (wave1 && doneSpawning == false) - SpawnEnemy(); // when amountOfSpecificEnemyToBeSpawned is full - doneSpawning == true; wave++;
-    // public RigidBody2D SpawnEnemy(RigidBody2D enemyPool, int amountOfSpecificEnemyToBeSpawned) {
-    // for ( int i = 0; i < amountOfSpecificEnemyToBeSpawned; i++) return GetEnenmy(enemyPool) }
 
     public Rigidbody2D SpawnWave(List<Rigidbody2D> theEnemyPool, int theAmountToSpawn)
     {
@@ -388,22 +372,18 @@ public class EnemySpawner : MonoBehaviour
         // Efter while loop - win!
         if (waveCounter >= 5)
         {
-            Win();
+            //gameManager.Win();
         }
     }
 
-    private void Win()
+    private void Update()
     {
         EnemyController[] enemies = FindObjectsOfType<EnemyController>();
-        foreach (EnemyController enemy in enemies)
+        if (waveCounter >= 5 && enemies.Length <= 0)
         {
-            if (!enemy.isActiveAndEnabled)
-                Debug.Log("YOU WON!");
+            gameManager.Win();
+            waveCounter = -1;
         }
-        
-        // Display score?
-        // Play again button?
-        // Enemies killed?
     }
     /*
     if (expandableEnemyPool)
