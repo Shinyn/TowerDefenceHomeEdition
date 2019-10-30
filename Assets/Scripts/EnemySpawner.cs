@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab4; // ghost
     public GameObject enemyPrefab5; // destroyer
     public GameObject enemyPrefab6; // reaper
-    float delay = 0.5f;
+    float delay = 2.5f;
     public GameManager gameManager;
     [SerializeField]
     int waveCounter;
@@ -117,7 +117,7 @@ public class EnemySpawner : MonoBehaviour
                     switch (typeSelection)
                     {
                         case "goblin":
-                            amountToSpawn = 2;
+                            amountToSpawn = 10;
                             for (int i = 0; i < amountToSpawn; i++)
                             {
                                 
@@ -125,21 +125,21 @@ public class EnemySpawner : MonoBehaviour
                                 if (rb != null)
                                 {
                                     rb.transform.position = transform.position;
-                                    yield return new WaitForSeconds(0.5f);
+                                    yield return new WaitForSeconds(1.0f);
                                 }
                             }
                             typeSelection = "orc";
                             yield return new WaitForSeconds(delay);
                             break;
                         case "orc":
-                            amountToSpawn = 1;
+                            amountToSpawn = 10;
                             for (int i = 0; i < amountToSpawn; i++)
                             {
                                 Rigidbody2D rb = SpawnWave(orcPool, amountToSpawn);
                                 if (rb != null)
                                 {
                                     rb.transform.position = transform.position;
-                                    yield return new WaitForSeconds(0.5f);
+                                    yield return new WaitForSeconds(1.0f);
                                 }
                             }
                             waveCounter++; // Fungerar!!! :D
@@ -157,7 +157,7 @@ public class EnemySpawner : MonoBehaviour
                     switch (typeSelection)
                     {
                         case "goblin":
-                            amountToSpawn = 5;
+                            amountToSpawn = 15;
                             for (int i = 0; i < amountToSpawn; i++)
                             {
 
@@ -165,45 +165,42 @@ public class EnemySpawner : MonoBehaviour
                                 if (rb != null)
                                 {
                                     rb.transform.position = transform.position;
-                                    yield return new WaitForSeconds(0.5f);
-                                    Debug.Log("ATS " + i);
+                                    yield return new WaitForSeconds(1.0f);
                                 }
                             }
                             typeSelection = "orc";
                             yield return new WaitForSeconds(delay);
                             break;
                         case "orc":
-                            amountToSpawn = 5;
+                            amountToSpawn = 15;
                             for (int i = 0; i < amountToSpawn; i++)
                             {
                                 Rigidbody2D rb = SpawnWave(orcPool, amountToSpawn);
                                 if (rb != null)
                                 {
                                     rb.transform.position = transform.position;
-                                    yield return new WaitForSeconds(0.5f);
-                                    Debug.Log("ATS " + i);
+                                    yield return new WaitForSeconds(1.0f);
                                 }
                             }
                             typeSelection = "ogre";
                             yield return new WaitForSeconds(delay);
                             break;
                         case "ogre":
-                            amountToSpawn = 5;
+                            amountToSpawn = 7;
                             for (int i = 0; i < amountToSpawn; i++)
                             {
                                 Rigidbody2D rb = SpawnWave(ogrePool, amountToSpawn);
                                 if (rb != null)
                                 {
                                     rb.transform.position = transform.position;
-                                    yield return new WaitForSeconds(0.5f);
-                                    Debug.Log("ATS " + i);
+                                    yield return new WaitForSeconds(1.0f);
                                 }
                             }
                             typeSelection = "goblin";
                             waveCounter++;
                             break;
                     }
-                    yield return new WaitForSeconds(1f);
+                    yield return new WaitForSeconds(5f);
                     break;
                 case 3:
                     // våg 3
@@ -211,7 +208,7 @@ public class EnemySpawner : MonoBehaviour
                     switch (typeSelection)
                     {
                         case "goblin":
-                            amountToSpawn = 5;
+                            amountToSpawn = 20;
                             for (int i = 0; i < amountToSpawn; i++)
                             {
 
@@ -219,45 +216,42 @@ public class EnemySpawner : MonoBehaviour
                                 if (rb != null)
                                 {
                                     rb.transform.position = transform.position;
-                                    yield return new WaitForSeconds(0.5f);
-                                    Debug.Log("ATS " + i);
+                                    yield return new WaitForSeconds(1.0f);
                                 }
                             }
                             typeSelection = "orc";
                             yield return new WaitForSeconds(delay);
                             break;
                         case "orc":
-                            amountToSpawn = 5;
+                            amountToSpawn = 20;
                             for (int i = 0; i < amountToSpawn; i++)
                             {
                                 Rigidbody2D rb = SpawnWave(orcPool, amountToSpawn);
                                 if (rb != null)
                                 {
                                     rb.transform.position = transform.position;
-                                    yield return new WaitForSeconds(0.5f);
-                                    Debug.Log("ATS " + i);
+                                    yield return new WaitForSeconds(1.0f);
                                 }
                             }
                             typeSelection = "ogre";
                             yield return new WaitForSeconds(delay);
                             break;
                         case "ogre":
-                            amountToSpawn = 5;
+                            amountToSpawn = 10;
                             for (int i = 0; i < amountToSpawn; i++)
                             {
                                 Rigidbody2D rb = SpawnWave(ogrePool, amountToSpawn);
                                 if (rb != null)
                                 {
                                     rb.transform.position = transform.position;
-                                    yield return new WaitForSeconds(0.5f);
-                                    Debug.Log("ATS " + i);
+                                    yield return new WaitForSeconds(1.0f);
                                 }
                             }
                             typeSelection = "goblin";
                             waveCounter++;
                             break;
                     }
-                    yield return new WaitForSeconds(1f);
+                    yield return new WaitForSeconds(5f);
                     break;
                 case 4:
                     //våg 4
@@ -265,7 +259,7 @@ public class EnemySpawner : MonoBehaviour
                     switch (typeSelection)
                     {
                         case "goblin":
-                            amountToSpawn = 5;
+                            amountToSpawn = 35;
                             for (int i = 0; i < amountToSpawn; i++)
                             {
 
@@ -274,14 +268,13 @@ public class EnemySpawner : MonoBehaviour
                                 {
                                     rb.transform.position = transform.position;
                                     yield return new WaitForSeconds(0.5f);
-                                    Debug.Log("ATS " + i);
                                 }
                             }
                             typeSelection = "orc";
                             yield return new WaitForSeconds(delay);
                             break;
                         case "orc":
-                            amountToSpawn = 5;
+                            amountToSpawn = 15;
                             for (int i = 0; i < amountToSpawn; i++)
                             {
                                 Rigidbody2D rb = SpawnWave(orcPool, amountToSpawn);
@@ -289,14 +282,13 @@ public class EnemySpawner : MonoBehaviour
                                 {
                                     rb.transform.position = transform.position;
                                     yield return new WaitForSeconds(0.5f);
-                                    Debug.Log("ATS " + i);
                                 }
                             }
                             typeSelection = "ogre";
                             yield return new WaitForSeconds(delay);
                             break;
                         case "ogre":
-                            amountToSpawn = 5;
+                            amountToSpawn = 15;
                             for (int i = 0; i < amountToSpawn; i++)
                             {
                                 Rigidbody2D rb = SpawnWave(ogrePool, amountToSpawn);
@@ -304,14 +296,13 @@ public class EnemySpawner : MonoBehaviour
                                 {
                                     rb.transform.position = transform.position;
                                     yield return new WaitForSeconds(0.5f);
-                                    Debug.Log("ATS " + i);
                                 }
                             }
                             typeSelection = "goblin";
                             waveCounter++;
                             break;
                     }
-                    yield return new WaitForSeconds(1f);
+                    yield return new WaitForSeconds(5f);
                     break;
                 case 5:
                     // våg 5
@@ -319,7 +310,7 @@ public class EnemySpawner : MonoBehaviour
                     switch (typeSelection)
                     {
                         case "goblin":
-                            amountToSpawn = 5;
+                            amountToSpawn = 50;
                             for (int i = 0; i < amountToSpawn; i++)
                             {
 
@@ -328,14 +319,13 @@ public class EnemySpawner : MonoBehaviour
                                 {
                                     rb.transform.position = transform.position;
                                     yield return new WaitForSeconds(0.5f);
-                                    Debug.Log("ATS " + i);
                                 }
                             }
                             typeSelection = "orc";
                             yield return new WaitForSeconds(delay);
                             break;
                         case "orc":
-                            amountToSpawn = 5;
+                            amountToSpawn = 50;
                             for (int i = 0; i < amountToSpawn; i++)
                             {
                                 Rigidbody2D rb = SpawnWave(orcPool, amountToSpawn);
@@ -343,14 +333,13 @@ public class EnemySpawner : MonoBehaviour
                                 {
                                     rb.transform.position = transform.position;
                                     yield return new WaitForSeconds(0.5f);
-                                    Debug.Log("ATS " + i);
                                 }
                             }
                             typeSelection = "ogre";
                             yield return new WaitForSeconds(delay);
                             break;
                         case "ogre":
-                            amountToSpawn = 5;
+                            amountToSpawn = 20;
                             for (int i = 0; i < amountToSpawn; i++)
                             {
                                 Rigidbody2D rb = SpawnWave(ogrePool, amountToSpawn);
@@ -358,7 +347,6 @@ public class EnemySpawner : MonoBehaviour
                                 {
                                     rb.transform.position = transform.position;
                                     yield return new WaitForSeconds(0.5f);
-                                    Debug.Log("ATS " + i);
                                 }
                             }
                             waveCounter++;
@@ -369,11 +357,6 @@ public class EnemySpawner : MonoBehaviour
                     
             } // switch
         } // while loop -/ I en while-loop så behövde alla cases öka waveCountern annars hopper den aldrig ur, blir infinite och crashar unity
-        // Efter while loop - win!
-        if (waveCounter >= 5)
-        {
-            //gameManager.Win();
-        }
     }
 
     private void Update()

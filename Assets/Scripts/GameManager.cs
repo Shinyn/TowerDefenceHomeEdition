@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
         winSound = audioClips[10];
         //soundTrack.Play();
         lives = 20;
-        gold = 400;
+        gold = 600;
         livesText.text = lives.ToString();
     }
 

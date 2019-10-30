@@ -330,7 +330,7 @@ public class TowerBaseController : MonoBehaviour
                     towerValue += upgradePrice;
                     upgradePrice = 288;
                     BulletDamage(20, 41);
-                    fireRate = 1.5f;
+                    fireRate = 1.2f;
                     break;
                 // Torn är lvl 2 -> ändra stats till lvl 3
                 case 3:
@@ -342,7 +342,7 @@ public class TowerBaseController : MonoBehaviour
                 // Torn är lvl 3 -> ändra stats till lvl 4 / 4a / 4b -- Får se om det blir ett val här mellan 4a och 4b eller inte
                 case 4:
                     BulletDamage(60, 101);
-                    fireRate = 2f;
+                    fireRate = 1.5f;
                     detectRadius = 2.5f;
                     towerValue += upgradePrice;
                     DisableUpgrade();

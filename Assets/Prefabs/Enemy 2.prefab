@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Goblin
-  hp: 50
+  hp: 40
   lifeCost: 1
   goldValue: 4
   goalPost: {fileID: 1895005401928696685, guid: 8e997cd8fb46b41429b1bd886d05c1d7,
@@ -119,7 +119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ea562579487884589ca76b198cb583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2.5
   pathPointsPrefab: {fileID: 1895005401928696685, guid: 8e997cd8fb46b41429b1bd886d05c1d7,
     type: 3}
 --- !u!61 &2367069412795800650
